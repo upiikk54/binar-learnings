@@ -9,11 +9,15 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <style>
+        body {
+            overflow-x: hidden;
+        }
+
         .margin-find {
             align-items: center;
         }
-        
-        .margin-nav{
+
+        .margin-nav {
             margin: 0% 5%;
         }
 
@@ -28,6 +32,10 @@
 
             .position-header {
                 flex-wrap: wrap-reverse;
+            }
+
+            .reset {
+                padding: 0;
             }
         }
     </style>
@@ -66,17 +74,20 @@
     <!-- navbar -->
 
     <!-- header -->
-    <div class="row position-header">
-        <div class="col-md-6 margin-find find">
-            <h1>Find All Your Products With Us At The Best Price</h1>
-            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or
-                web designs. The passage is attributed to an unknown</p>
-            <button type="button" class="btn btn-primary button-view">View Products</button>
-        </div>
-        <div class="col-md-6">
-            <img class="w-100" src="avanza-terbaru_20180807_055423.jpg"></img>
+    <div class="container-fluid">
+        <div class="row position-header reset">
+            <div class="col-md-6 margin-find find">
+                <h1>Find All Your Products With Us At The Best Price</h1>
+                <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or
+                    web designs. The passage is attributed to an unknown</p>
+                <button type="button" class="btn btn-primary button-view">View Products</button>
+            </div>
+            <div class="col-md-6">
+                <img class="w-100" src="avanza-terbaru_20180807_055423.jpg"></img>
+            </div>
         </div>
     </div>
+
 
     <!-- header -->
 </body>
