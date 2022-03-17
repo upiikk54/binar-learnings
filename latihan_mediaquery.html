@@ -5,50 +5,61 @@ b. Ukuran tablet: background color -> biru + tulisan -> Ini device tablet
 c. Ukuran desktop: background color -> hijau + tulisan -> Ini device desktop -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        #dekstop {
-            background-color: green;
-            display: block;
-        }
-
-        #tablet {
-            background-color: blue;
+        .mobile,
+        .tablet,
+        .desktop {
             display: none;
         }
 
-        #mobile {
-            background-color: red;
-            display: none;
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-            #dekstop {
-                display: none;
+        @media (min-width: 640px) {
+            body {
+                background-color: red;
             }
 
-            #tablet {
+            .mobile {
                 display: block;
             }
 
-            #mobile {
+            .tablet,
+            .desktop {
                 display: none;
             }
         }
 
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-            #dekstop {
+        @media (min-width: 768px) {
+            body {
+                background-color: blue;
+            }
+
+            .mobile,
+            .desktop {
                 display: none;
             }
 
-            #tablet {
+            .tablet {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                background-color: green;
+            }
+
+            .mobile,
+            .tablet {
                 display: none;
             }
 
-            #mobile {
+            .desktop {
                 display: block;
             }
         }
@@ -56,8 +67,8 @@ c. Ukuran desktop: background color -> hijau + tulisan -> Ini device desktop -->
 </head>
 
 <body>
-
-    <p id="dekstop">Ini device desktop</p>
+    
+    <p id="desktop">Ini device desktop</p>
     <p id="tablet">Ini device tablet</p>
     <p id="mobile">Ini device mobile</p>
 
