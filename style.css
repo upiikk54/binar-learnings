@@ -1,0 +1,107 @@
+/* navbar */
+.bg-all {
+    background-color: #F1F3FF;
+}
+
+.navbar-loc {
+    margin: 0% 5%;
+}
+
+.brand {
+    background-color: #0D28A6;
+    width: 100px;
+    height: 34px;
+    margin-left: 7%;
+}
+/* navbar */
+
+/* header */
+.grid-rent {
+    padding-top: 5%;
+    padding-left: 12%;
+}
+
+.grid-car {
+    padding-left: 3.5%;
+}
+
+.size-car {
+    width: 704px;
+    height: 407px;
+}
+
+/* header */
+
+/* konten mbak mbak */
+.grid-service {
+    margin-top: 6%;
+}
+
+.size-service {
+    width: 459px;
+    height: 428px;
+    margin-left: 9%;
+}
+
+.grid-best {
+    margin-top: 9%;
+    padding-left: 10%;
+}
+
+.icon-tick {
+    color: #1434d4;
+    font-size: 20px;
+    background-color: #CFD4ED;
+    width: 30px;
+    height: 30px;
+}
+
+/* konten mbak mbak */
+
+/* why us */
+.grid-whyus {
+    margin-top: 100px;
+}
+
+.icon-promotion {
+    width: 268px;
+    height: 196px;
+}
+
+/* why us */
+
+/* testimonial */
+.card-testi {
+    width: 619px;
+    height: 270px;
+}
+
+.pos-card {
+    margin-left: 32px;
+}
+
+/* testimonial */
+
+/* konten sewa mobil */
+.grid-rentcar {
+    background-color: #0D28A6;
+    border-radius: 13px;
+}
+
+.pos-rentcar {
+    margin: 0% 23%;
+}
+/* konten sewa mobil */
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+    .size-car{
+        width: 344px;
+        height: 199px;
+    }
+
+    .size-service {
+        width: 252px;
+        height: 228px;
+    }
+
+}
