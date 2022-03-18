@@ -104,4 +104,29 @@
         height: 228px;
     }
 
+    .grid-whyus {
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    .size-card{
+        margin-top: 5%;
+    }
+
+    .faq{
+        text-align: center;
+    }
+
+    .size-font{
+        font-size: small;
+    }
+
+    .footer{
+        padding-left: 4%;
+    }
+
+    .pos-card2{
+        position: relative;
+    }
+
 }
