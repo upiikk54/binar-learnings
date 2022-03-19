@@ -68,6 +68,17 @@
     height: 196px;
 }
 
+.why-us{ 
+    padding-top: 100px; 
+} 
+ 
+.why-text p{ 
+    font-size: 14px; 
+} 
+ 
+.why-text .card{ 
+    border-radius: 8px; 
+}
 /* why us */
 
 /* testimonial */
@@ -79,7 +90,6 @@
 .pos-card {
     margin-left: 32px;
 }
-
 /* testimonial */
 
 /* konten sewa mobil */
@@ -93,15 +103,19 @@
 }
 /* konten sewa mobil */
 
-@media only screen and (min-width: 320px) and (max-width: 480px){
+
+@media only screen and (min-width: 320px) and (max-width: 576px){
+    html{
+        overflow-x: hidden !important;
+    }
     .size-car{
-        width: 344px;
-        height: 199px;
+        width: 100%;
+        height: 100%;
     }
 
     .size-service {
-        width: 252px;
-        height: 228px;
+        width: 100%;
+        height: 100%;
     }
 
     .grid-whyus {
