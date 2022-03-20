@@ -13,6 +13,7 @@
     height: 34px;
     margin-left: 7%;
 }
+
 /* navbar */
 
 /* ====================================================== */
@@ -32,6 +33,7 @@
     width: 704px;
     height: 407px;
 }
+
 /* header */
 
 /* ====================================================== */
@@ -59,6 +61,7 @@
     width: 30px;
     height: 30px;
 }
+
 /* konten mbak mbak */
 
 /* ====================================================== */
@@ -74,17 +77,18 @@
     height: 196px;
 }
 
-.why-us{ 
-    padding-top: 100px; 
-} 
- 
-.why-text p{ 
-    font-size: 14px; 
-} 
- 
-.why-text .card{ 
-    border-radius: 8px; 
+.why-us {
+    padding-top: 100px;
 }
+
+.why-text p {
+    font-size: 14px;
+}
+
+.why-text .card {
+    border-radius: 8px;
+}
+
 /* why us */
 
 /* ====================================================== */
@@ -97,8 +101,9 @@
 }
 
 .pos-card {
-    margin-left: 32px;
+    margin-left: 2%;
 }
+
 /* testimonial */
 
 /* ====================================================== */
@@ -109,21 +114,23 @@
     background-color: #0D28A6;
     border-radius: 13px;
 }
+
 /* konten sewa mobil */
 
 /* ====================================================== */
 /* ====================================================== */
 
 /* FAQ */
-.display-accor{
+.display-accor {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 /* FAQ */
 
-@media only screen and (min-width: 320px) and (max-width: 576px){
-    .size-car{
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .size-car {
         width: 100%;
         height: 100%;
     }
@@ -133,20 +140,46 @@
         height: 100%;
     }
 
-    .size-card{
+    .size-card {
         margin-top: 5%;
     }
 
-    .faq{
+    .pos-card {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .faq {
         text-align: center;
     }
 
-    .footer{
+    .center-icon{
+        align-items: center;
+    }
+
+    .center-img {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    .reset-img{
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer {
         padding-left: 4%;
     }
 
-    .display-none{
+    .size-carosel{
+        height: max-content;
+    }
+
+    .display-none {
         display: none;
     }
 
+    .img-pos{
+        margin-top: 0;
+    }
 }
