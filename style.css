@@ -115,9 +115,10 @@
 /* ====================================================== */
 
 /* FAQ */
-.card-horizontal{
+.display-accor{
     display: flex;
-    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
 }
 /* FAQ */
 
@@ -144,5 +145,8 @@
         padding-left: 4%;
     }
 
+    .display-none{
+        display: none;
+    }
 
 }
