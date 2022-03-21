@@ -190,9 +190,13 @@
         height: 100%;
     }
 
+    .grid-service1 {
+        margin-top: 8%;
+    }
+
     .size-service {
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
     }
 
     .size-card {
@@ -241,4 +245,24 @@
     .brand {
         margin-left: 10%;
     }
+
+    .owl-carousel .card-body {
+        display: block;
+    }
+
+    .card-right {
+        padding: 0;
+    }
+
+    .card-left {
+        width: 25%;
+        height: 25%;
+        margin: 0;
+        margin-left: 37%;
+    }
+
+    .icon-pos{
+        padding-top: 5%;
+    }
+
 }
