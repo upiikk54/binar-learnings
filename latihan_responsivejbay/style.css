@@ -1,17 +1,21 @@
+/* navbar */
 .bg-btn {
     background-color: #020078;
 }
 
-.bg-all{
-    background-color: #dbdaf0;
+.bg-all {
+    background-color: #f1e9f2;
 }
-.bg-text{
+
+.bg-text {
     color: #020078;
 }
+
+
 /* header */
 .pos-teks-header {
     padding-top: 9%;
-    padding-left: 8%;
+    padding-left: 7%;
 }
 
 .size-img {
@@ -20,21 +24,93 @@
 }
 
 /* explore our products */
-.size-icon{
-    height: 50%;
-    width: 50%;
+.size-icon {
+    width: 25%;
 }
 
-.card-center{
+.card-center {
     margin-left: 20%;
 }
 
+.card-text {
+    padding: 0 15%;
+    width: 100%;
+}
+
+.btn-hover {
+    border-color: #020078;
+    color: #020078;
+}
+
+.btn-hover:hover {
+    background-color: #020078;
+    color: white;
+}
+
 /* related products */
-.img-size{
+.img-size {
     height: 150px;
     width: 100%;
 }
 
-.price{
+.price {
     color: #d9501a;
+}
+
+/* what are our products */
+.sizeimg {
+    height: 23rem;
+    width: 70%;
+}
+
+.top {
+    margin-top: 8%;
+}
+
+.pos-teks-products {
+    padding-top: 9%;
+    padding-left: 8%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    body{
+        overflow-x: hidden;
+    }
+    
+    /* header */
+    .top-img{
+        margin-top: 5%;
+    }
+
+    .pos-header{
+        flex-wrap: wrap-reverse;
+    }
+    
+    .center-header{
+        text-align: center;
+    }
+
+    .fullbtn{
+        width: 100%;
+    }
+
+    /* Explore */
+    .top-explore{
+        margin-top: 25%;
+    }
+
+    /* related */
+    .top-related{
+        margin-top: 10%;
+    }
+
+    /* what Are */
+    .center-what{
+        text-align: center;
+    }
+
+    .sizeimg {
+        height: 23rem;
+        width: 100%;
+    }
 }

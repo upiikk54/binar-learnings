@@ -12,9 +12,9 @@
     <title>Latihan responsive</title>
 </head>
 
-<body>
+<body class="bg-all">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container mt-3">
             <a class="navbar-brand" href="#">XoneShop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -23,11 +23,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link text-dark" aria-current="page" href="#">Services</a>
-                    <a class="nav-link text-dark" href="#">Details</a>
-                    <a class="nav-link text-dark" href="#">Features</a>
-                    <a class="nav-link text-dark" href="#" tabindex="-1" aria-disabled="true">Drop</a>
-                    <button type="button" class="btn btn-primary">Sign In</button>
+                    <a class="nav-link text-dark pe-3" aria-current="page" href="#">Services</a>
+                    <a class="nav-link text-dark pe-3" href="#">Details</a>
+                    <a class="nav-link text-dark pe-3" href="#">Features</a>
+                    <a class="nav-link text-dark pe-3" href="#" tabindex="-1" aria-disabled="true">Drop</a>
+                    <button type="button" class="btn bg-btn text-light">Sign In</button>
                 </div>
             </div>
         </div>
@@ -35,22 +35,22 @@
     <!-- navbar -->
 
     <!-- header -->
-    <div class="container-fluid bg-light">
-        <div class="row mt-3">
-            <div class="col-md-6 pos-teks-header">
+    <div class="container-fluid">
+        <div class="row mt-3 pos-header">
+            <div class="col-md-6 pos-teks-header center-header">
                 <h1>find all your trips with us at the best and attractive prices</h1>
                 <p>Travel around Indonesia with us and find your own happiness</p>
-                <button type="button" class="btn btn-primary">View Products</button>
+                <button type="button" class="btn bg-btn text-light fullbtn">View Products</button>
             </div>
             <div class="col-md-6">
-                <img class="rounded-3 size-img" src="Gili_lawa-770x514.jpg">
+                <img class="rounded-3 size-img top-img" src="Gili_lawa-770x514.jpg">
             </div>
         </div>
     </div>
     <!-- header -->
 
     <!-- explore product -->
-    <div class="container-fluid">
+    <div class="container top">
         <div class="row">
             <div class="col pt-5">
                 <h2 class="text-center"><b>Explore Our Products</b></h2>
@@ -58,53 +58,41 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row mt-4">
-            <div class="col">
-                <div class="card card-center" style="width: 18rem;">
-                    <div class="card-body text-center">
-                        <img class="size-icon" src="affordable.png" alt="">
-                        <h5 class="card-title">Find Best Price</h5>
-                        <p class="card-text">
-                            find the most complete and best package price with the right benefits
-                        </p>
-                        <a class="bg-text"><b>Learn More</b></a>
-                        <a class="bi bi-arrow-right bg-text"></a>
-                    </div>
-                </div>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img class="size-icon" src="affordable.png" alt="">
+                <h5 class="card-title pt-4">Find Best Price</h5>
+                <p class="card-text">
+                    find the most complete and best package price with the right benefits
+                </p>
+                <a class="bg-text"><b>Learn More</b></a>
+                <a class="bi bi-arrow-right bg-text"></a>
             </div>
-            <div class="col">
-                <div class="card card-center" style="width: 18rem;">
-                    <div class="card-body text-center">
-                        <img class="size-icon" src="convenient.png" alt="">
-                        <h5 class="card-title">Comfortable Vacation</h5>
-                        <p class="card-text">
-                            We have packed your holiday needs here without you bothering to prepare.
-                        </p>
-                        <a class="bg-text"><b>Learn More</b></a>
-                        <a class="bi bi-arrow-right bg-text"></a>
-                    </div>
-                </div>
+            <div class="col-md-4 top-explore">
+                <img class="size-icon" src="convenient.png" alt="">
+                <h5 class="card-title pt-4">Comfortable Vacation</h5>
+                <p class="card-text">
+                    We have packed your holiday needs here without you bothering to prepare.
+                </p>
+                <a class="bg-text"><b>Learn More</b></a>
+                <a class="bi bi-arrow-right bg-text"></a>
             </div>
-            <div class="col">
-                <div class="card card-center" style="width: 18rem;">
-                    <div class="card-body text-center">
-                        <img class="size-icon" src="delivery.png" alt="">
-                        <h5 class="card-title">Various Destinations</h5>
-                        <p class="card-text">
-                            Indonesia has an interesting natural and cultural wealth for you to visit and you're happy.
-                        </p>
-                        <a class="bg-text"><b>Learn More</b></a>
-                        <a class="bi bi-arrow-right bg-text"></a>
-                    </div>
-                </div>
+            <div class="col-md-4 top-explore">
+                <img class="size-icon" src="delivery.png" alt="">
+                <h5 class="card-title pt-4">Various Destinations</h5>
+                <p class="card-text">
+                    Indonesia has an interesting natural and cultural wealth for you to visit.
+                </p>
+                <a class="bg-text"><b>Learn More</b></a>
+                <a class="bi bi-arrow-right bg-text"></a>
             </div>
         </div>
     </div>
     <!-- explore product -->
 
     <!-- Related product -->
-    <div class="container-fluid">
+    <div class="container top">
         <div class="row">
             <div class="col pt-5">
                 <h2 class="text-center"><b>Related product</b></h2>
@@ -112,70 +100,43 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row pt-3">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="Iblis-640x360.jpg" alt="">
-                        <h5 class="card-title text-center">Paradise Island</h5>
-                        <p class="price text-center"><b>$500.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img class="img-size rounded-3" src="Iblis-640x360.jpg" alt="">
+                <h5 class="card-title text-center">Paradise Island</h5>
+                <p class="price text-center"><b>$500.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="Lombok-Guide.jpg" alt="">
-                        <h5 class="card-title text-center">Lombok Island</h5>
-                        <p class="price text-center"><b>$300.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+            <div class="col-md-4 top-related">
+                <img class="img-size rounded-3" src="Lombok-Guide.jpg" alt="">
+                <h5 class="card-title text-center">Lombok Island</h5>
+                <p class="price text-center"><b>$300.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="Island-of-Hawaii-Accommodations.jpg" alt="">
-                        <h5 class="card-title text-center">Hawaii Island</h5>
-                        <p class="price text-center"><b>$250.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+            <div class="col-md-4 top-related">
+                <img class="img-size rounded-3" src="Island-of-Hawaii-Accommodations.jpg" alt="">
+                <h5 class="card-title text-center">Hawaii Island</h5>
+                <p class="price text-center"><b>$250.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
-        </div>
-
-        <div class="row pt-3">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="5418187901_a981d8cb7c_z.jpg" alt="">
-                        <h5 class="card-title text-center">Komodo Island</h5>
-                        <p class="price text-center"><b>$5.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+            <div class="col-md-4 pt-5">
+                <img class="img-size rounded-3" src="5418187901_a981d8cb7c_z.jpg" alt="">
+                <h5 class="card-title text-center">Komodo Island</h5>
+                <p class="price text-center"><b>$5.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="fregate-island-private.jpg" alt="">
-                        <h5 class="card-title text-center">Fregate Island</h5>
-                        <p class="price text-center"><b>$450.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+            <div class="col-md-4 pt-5">
+                <img class="img-size rounded-3" src="fregate-island-private.jpg" alt="">
+                <h5 class="card-title text-center">Fregate Island</h5>
+                <p class="price text-center"><b>$450.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="img-size rounded-3" src="051256000_1438164687-o-PALAWAN-PHILLIPPINES-900.jpg" alt="">
-                        <h5 class="card-title text-center">Palawan Island</h5>
-                        <p class="price text-center"><b>$50.000</b></p>
-                        <a href="#" class="btn btn-outline-primary w-100">Buy Now</a>
-                    </div>
-                </div>
+            <div class="col-md-4 pt-5">
+                <img class="img-size rounded-3" src="051256000_1438164687-o-PALAWAN-PHILLIPPINES-900.jpg" alt="">
+                <h5 class="card-title text-center">Palawan Island</h5>
+                <p class="price text-center"><b>$50.000</b></p>
+                <a href="#" class="btn btn-hover w-100">Buy Now</a>
             </div>
         </div>
     </div>
@@ -183,13 +144,39 @@
     <div class="container text-center">
         <div class="row">
             <div class="col pt-5">
-                <a href="#" class="btn btn-primary">View All Products</a>
+                <a href="#" class="btn bg-btn text-light">View All Products</a>
+            </div>
+        </div>
+    </div>
+    <!-- Related product -->
+
+    <!-- what are our products -->
+    <div class="container top">
+        <div class="row mt-3">
+            <div class="col-md-6 text-center">
+                <img class="rounded-3 sizeimg" src="mount-rinjani.jpg">
+            </div>
+            <div class="col-md-6 pos-teks-products center-what">
+                <h2><b>What Are Our Products</b></h2>
+                <p>Travel around Indonesia with us and find your own happiness</p>
+                <button type="button" class="btn bg-btn text-light">Get Offers</button>
             </div>
         </div>
     </div>
 
-    <!-- Related product -->
-
+    <!-- Reviews Mentoring -->
+    <div class="container top">
+        <div class="row mt-3">
+            <div class="col-md-6 text-center">
+                <img class="rounded-3 sizeimg" src="mount-rinjani.jpg">
+            </div>
+            <div class="col-md-6 pos-teks-products">
+                <h2><b>What Are Our Products</b></h2>
+                <p>Travel around Indonesia with us and find your own happiness</p>
+                <button type="button" class="btn bg-btn text-light">Get Offers</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
