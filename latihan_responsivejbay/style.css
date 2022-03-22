@@ -72,6 +72,39 @@
     padding-left: 8%;
 }
 
+/* Reviews Monitoring */
+.card-monitor{
+    height: 100%;
+    width: 70%;
+}
+
+.pos-monitor{
+    margin-left: 15%;
+}
+
+.pos-teks-monitor{
+    padding-left: 8%;
+    padding-top: 4%;
+}
+
+/* submit */
+.pos-teks-submit{
+    padding-left: 8%;
+    padding-top: 6%;
+}
+
+/* footer */
+.teks-footer{
+    width: 25%;
+}
+
+.icon-size{
+    width: 3%;
+    height: 20%;
+}
+
+
+
 @media (min-width: 320px) and (max-width: 480px) {
     body{
         overflow-x: hidden;
@@ -113,4 +146,7 @@
         height: 23rem;
         width: 100%;
     }
+
+    /* Reviews Monitoring */
+
 }
