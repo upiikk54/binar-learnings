@@ -1,0 +1,40 @@
+.bg-btn {
+    background-color: #020078;
+}
+
+.bg-all{
+    background-color: #dbdaf0;
+}
+.bg-text{
+    color: #020078;
+}
+/* header */
+.pos-teks-header {
+    padding-top: 9%;
+    padding-left: 8%;
+}
+
+.size-img {
+    height: 100%;
+    width: 100%;
+}
+
+/* explore our products */
+.size-icon{
+    height: 50%;
+    width: 50%;
+}
+
+.card-center{
+    margin-left: 20%;
+}
+
+/* related products */
+.img-size{
+    height: 150px;
+    width: 100%;
+}
+
+.price{
+    color: #d9501a;
+}
