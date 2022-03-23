@@ -64,6 +64,12 @@
     color: #d9501a;
 }
 
+.hover:hover{
+    border: 1px solid #effffd; 
+    border-radius: 8px; 
+    box-shadow: 10px 10px 10px #effffd; 
+}
+
 /* what are our products */
 .sizeimg {
     height: 23rem;
