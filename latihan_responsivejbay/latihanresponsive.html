@@ -16,11 +16,26 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container mt-3">
-            <a class="navbar-brand" href="#">XoneShop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand p1" href="#">Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+                aria-controls="offcanvasTop" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasTopLabel" class="p1">Shop</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <a class="nav-link text-dark pe-3" aria-current="page" href="#">Services</a>
+                    <a class="nav-link text-dark pe-3" href="#">Details</a>
+                    <a class="nav-link text-dark pe-3" href="#">Features</a>
+                    <a class="nav-link text-dark pe-3" href="#" tabindex="-1" aria-disabled="true">Drop</a>
+                    <button type="button" class="btn bg-btn text-light">Sign In</button>
+                </div>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link text-dark pe-3" aria-current="page" href="#">Services</a>
@@ -39,7 +54,8 @@
         <div class="row mt-3 pos-header">
             <div class="col-md-6 pos-teks-header center-header">
                 <h1>find all your trips with us at the best and attractive prices</h1>
-                <p>Travel around Indonesia with us and find your own happiness</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
                 <button type="button" class="btn bg-btn text-light fullbtn">View Products</button>
             </div>
             <div class="col-md-6">
@@ -103,40 +119,40 @@
     <div class="container mt-5">
         <div class="row text-center">
             <div class="col-md-4">
-                <img class="img-size rounded-3" src="Iblis-640x360.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="Iblis-640x360.jpg" alt="">
                 <h5 class="card-title text-center">Paradise Island</h5>
                 <p class="price text-center"><b>$500.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
             <div class="col-md-4 top-related">
-                <img class="img-size rounded-3" src="Lombok-Guide.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="Lombok-Guide.jpg" alt="">
                 <h5 class="card-title text-center">Lombok Island</h5>
                 <p class="price text-center"><b>$300.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
             <div class="col-md-4 top-related">
-                <img class="img-size rounded-3" src="Island-of-Hawaii-Accommodations.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="Island-of-Hawaii-Accommodations.jpg" alt="">
                 <h5 class="card-title text-center">Hawaii Island</h5>
                 <p class="price text-center"><b>$250.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
             <div class="col-md-4 pt-5">
-                <img class="img-size rounded-3" src="5418187901_a981d8cb7c_z.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="5418187901_a981d8cb7c_z.jpg" alt="">
                 <h5 class="card-title text-center">Komodo Island</h5>
                 <p class="price text-center"><b>$5.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
             <div class="col-md-4 pt-5">
-                <img class="img-size rounded-3" src="fregate-island-private.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="fregate-island-private.jpg" alt="">
                 <h5 class="card-title text-center">Fregate Island</h5>
                 <p class="price text-center"><b>$450.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
             <div class="col-md-4 pt-5">
-                <img class="img-size rounded-3" src="051256000_1438164687-o-PALAWAN-PHILLIPPINES-900.jpg" alt="">
+                <img class="img-size rounded-3 shadow" src="051256000_1438164687-o-PALAWAN-PHILLIPPINES-900.jpg" alt="">
                 <h5 class="card-title text-center">Palawan Island</h5>
                 <p class="price text-center"><b>$50.000</b></p>
-                <a href="#" class="btn btn-hover w-100">Buy Now</a>
+                <a href="#" class="btn btn-hover w-50">Buy Now</a>
             </div>
         </div>
     </div>
@@ -154,11 +170,15 @@
     <div class="container top">
         <div class="row mt-3">
             <div class="col-md-6 text-center">
-                <img class="rounded-3 sizeimg " src="mount-rinjani.jpg">
+                <img class="rounded-3 sizeimg shadow" src="mount-rinjani.jpg">
             </div>
             <div class="col-md-6 pos-teks-products center-what">
                 <h2><b>What Are Our Products</b></h2>
-                <p>Travel around Indonesia with us and find your own happiness</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
                 <button type="button" class="btn bg-btn text-light">Get Offers</button>
             </div>
         </div>
@@ -166,14 +186,14 @@
 
     <!-- Reviews Mentoring -->
     <div class="container top">
-        <div class="row mt-3">
+        <div class="row mt-3 pos-header">
             <div class="col-md-6 text-center">
                 <div class="card card-monitor pos-monitor">
                     <div class="card-body shadow">
-                        <p>XoneShop</p>
+                        <p class="p1">Shop</p>
                         <p><b>We're Glad You Had A Great Experience</b></p>
                         <p>please give your criticism and suggestions</p>
-                        <a href="#" class="btn btn-hover me-3">Google</a>
+                        <a href="#" class="btn btn-hover me-3 p2">o</a>
                         <a href="#" class="btn btn-hover">Facebook</a>
                         <a href="#" class="btn btn-hover ms-3">Twitter</a>
                         <div class="price pt-3">
@@ -186,10 +206,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 pos-teks-monitor">
+            <div class="col-md-6 pos-teks-monitor center-header">
                 <h2><b>Reviews Monitoring</b></h2>
-                <p>Your criticism and suggestions mean a lot to us</p>
-                <button type="button" class="btn bg-btn text-light">Get Offers</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
     </div>
@@ -198,10 +221,13 @@
     <!-- Submit -->
     <div class="container top">
         <div class="row mt-3">
-            <div class="col-md-6 pos-teks-submit">
-                <h2><b>Reviews Monitoring</b></h2>
-                <p>Your criticism and suggestions mean a lot to us</p>
-                <button type="button" class="btn bg-btn text-light">Get Offers</button>
+            <div class="col-md-6 pos-teks-submit center-header">
+                <h2><b>Submit The Form For Xoneshop</b></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="col-md-6 text-center">
                 <div class="card card-monitor pos-monitor">
@@ -233,6 +259,41 @@
     <!-- Submit -->
 
     <!-- footer -->
+
+    <div class="border container-fluid mt-5 bg-primary">
+        <div class="row">
+            <div class="col-sm">
+                <p class="text-center pt-5 text-light">if you want to discover the experience of traveling the world and
+                    Indonesia please contact us </p>
+                <div class="text-center">
+                    <img src="facebook.png" class="icon-size me-3">
+                    <img src="twitter.png" class="icon-size me-3">
+                    <img src="instagram.png" class="icon-size me-3">
+                    <img src="youtube-227.png" class="icon-size me-3">
+                    <img src="pinterest.png" class="icon-size">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid top-footer">
+            <hr class="text-light">
+            <div class="row">
+                <div class="col text-light">
+                    Article Details
+                </div>
+                <div class="col text-light">
+                    Terms & Conditions
+                </div>
+                <div class="col text-light">
+                    Privacy Policy
+                </div>
+                <div class="col-md-6 text-light top-img center-footer">
+                    Copyright © Upik
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     <!-- footer -->
 
 </body>

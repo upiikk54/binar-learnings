@@ -11,6 +11,13 @@
     color: #020078;
 }
 
+.p1::before{
+    font-family: cursive;
+    content: "Xone";
+    color: #020078;
+}
+
+
 
 /* header */
 .pos-teks-header {
@@ -50,7 +57,7 @@
 /* related products */
 .img-size {
     height: 150px;
-    width: 100%;
+    width: 70%;
 }
 
 .price {
@@ -68,7 +75,7 @@
 }
 
 .pos-teks-products {
-    padding-top: 9%;
+    padding-top: 4%;
     padding-left: 8%;
 }
 
@@ -87,6 +94,17 @@
     padding-top: 4%;
 }
 
+.p2::before{
+    font-family: cursive;
+    content: "Go";
+    color: #a40707;
+}
+.p2::after{
+    font-family: cursive;
+    content: "gle";
+    color: #b89703;
+}
+
 /* submit */
 .pos-teks-submit{
     padding-left: 8%;
@@ -103,11 +121,23 @@
     height: 20%;
 }
 
+.top-footer{
+    margin-top: 5%;
+}
+
+.center-footer{
+    text-align: right;
+}
+
 
 
 @media (min-width: 320px) and (max-width: 480px) {
     body{
         overflow-x: hidden;
+    }
+
+    .offcanvas1{
+        height: max-content;
     }
     
     /* header */
@@ -148,5 +178,21 @@
     }
 
     /* Reviews Monitoring */
+    .pos-monitor{
+        margin: 0;
+    }
+    .card-monitor{
+        height: 100%;
+        width: 100%;
+    }
 
+    /* footer */
+    .icon-size{
+        width: 10%;
+        height: 20%;
+    }
+
+    .center-footer{
+        text-align: center;
+    }
 }
