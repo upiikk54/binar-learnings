@@ -1,4 +1,37 @@
 /* navbar */
-.text{
+.text {
     color: #22660d;
+}
+
+/* Header */
+.header {
+    background-image: url(p07phq4b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-header{
+    background-color: #f1b930;
+}
+
+.pos-header{
+    padding-left: 4%;
+}
+
+.text-header{
+    width: 35%;
+}
+
+/* niya bizi */
+.text-niya{
+    color: #f1b930;
+}
+
+.top-niya{
+    margin-top: 6%;
+}
+
+.size-img{
+    width: 20%;
+    height: 20%;
 }
