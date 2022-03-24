@@ -22,7 +22,7 @@
     width: 35%;
 }
 
-/* niya bizi */
+/* Step By Step */
 .text-niya{
     color: #f1b930;
 }
@@ -38,4 +38,40 @@
 
 .center-niya{
     align-items: center;
+}
+
+/* Region */
+.padding-left{
+    padding-left: 0;
+}
+
+.img-region{
+    width: 95%;
+    height: 100%;
+}
+
+.display-region{
+    display: none;
+}
+
+.btn-region{
+    background-color: #22660d;
+    color: white;
+}
+
+.pos-region{
+    padding-top: 10%;
+}
+
+/* promosi 1 */
+.font-prom{
+    font-size: 50px;
+}
+
+.img-prom{
+    width: 500px;
+    height: 500px;
+}
+.radius-prom{
+    border-radius: 50%;
 }
