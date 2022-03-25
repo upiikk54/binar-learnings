@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "noto";
+    src: url(Mulish-Regular.ttf);
+}
+
+* {
+    font-family: "noto";
+}
+
 /* navbar */
 .text {
     color: #22660d;
@@ -10,68 +19,139 @@
     background-size: cover;
 }
 
-.btn-header{
+.btn-header {
     background-color: #f1b930;
 }
 
-.pos-header{
+.w-btn {
+    width: 10%;
+}
+
+.pos-header {
     padding-left: 4%;
 }
 
-.text-header{
+.text-header {
     width: 35%;
 }
 
 /* Step By Step */
-.text-niya{
+.text-niya {
     color: #f1b930;
 }
 
-.top-niya{
+.top-niya {
     margin-top: 6%;
 }
 
-.size-img{
+.size-img {
     width: 20%;
     height: 20%;
 }
 
-.center-niya{
+.center-niya {
     align-items: center;
 }
 
 /* Region */
-.padding-left{
+.padding-left {
     padding-left: 0;
 }
 
-.img-region{
+.img-region {
     width: 95%;
     height: 100%;
 }
 
-.display-region{
+.display-region {
     display: none;
 }
 
-.btn-region{
+.btn-region {
     background-color: #22660d;
     color: white;
 }
 
-.pos-region{
+.pos-region {
     padding-top: 10%;
 }
 
+/* slide */
+.bg-img {
+    background-image: url(apps.23032.13608622719434797.30372fd8-b4bd-41c0-beea-1c2a61e087c1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+/* sponsor */
+.pos-spon {
+    margin: 0 auto;
+}
+
 /* promosi 1 */
-.font-prom{
+.font-prom {
     font-size: 50px;
 }
 
-.img-prom{
+.icon-prom {
+    width: 20%;
+    height: 20%;
+}
+
+.img-prom {
     width: 500px;
     height: 500px;
 }
-.radius-prom{
+
+.radius-prom {
     border-radius: 50%;
+}
+
+.pos-prom {
+    text-align: end;
+}
+
+.text-prom {
+    padding-top: 7%;
+    padding-left: 7%;
+}
+
+.btn-size {
+    width: 30%;
+}
+
+.text-DO {
+    font-size: 12px;
+}
+
+.text-playstore {
+    font-size: 20px;
+    line-height: 20px;
+    padding-left: 10%;
+}
+
+.text-appstore {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/* promosi 2 */
+.text-prom2 {
+    padding-top: 7%;
+}
+
+.icon-prom2 {
+    width: 20%;
+    height: 20%;
+}
+
+
+/* footer */
+.top-footer {
+    margin-top: 6%;
+}
+
+.bg-footer {
+    background-color: #22660d;
 }
