@@ -60,8 +60,43 @@
 /* ====================================================== */
 
 /* cari sewa mobil */
-.center-sewa{
+.center-sewa {
     align-items: center;
+}
+
+.position-sewa {
+    margin-top: -50px;
+    width: 75%;
+}
+
+.card-body {
+    padding: 1rem 3rem;
+}
+
+.btn-sewa {
+    margin-top: 38%;
+    width: 100px;
+}
+
+.border-sewa {
+    border-radius: 10px;
+}
+
+.grid-sewa {
+    padding-left: 5%;
+}
+
+/* ====================================================== */
+/* ====================================================== */
+
+/* cardlist */
+.size-carlist{
+    width: 22rem;
+    height: 38rem;
+}
+
+.pos-carlist{
+    margin-left: 3%;
 }
 
 /* ====================================================== */
@@ -269,8 +304,28 @@
         margin-left: 37%;
     }
 
-    .icon-pos{
+    .icon-pos {
         padding-top: 5%;
     }
 
+    .pos-carlist{
+        margin-left: 0%;
+    }
+
+    .size-carlist{
+        width: 22rem;
+        height: 36rem;
+    }
+
+    .pos-form{
+        margin-top: 0%;
+    }
+
+    .pos-form button{
+        width: 100%;
+    }
+
+    .btn-sewa{
+        margin-top: 10%;
+    }
 }
