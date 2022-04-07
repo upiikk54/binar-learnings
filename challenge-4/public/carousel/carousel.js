@@ -4,8 +4,8 @@ $('.owl-carousel').owlCarousel({
     nav:true,
     dots: false,
     center: true,
-    navText : ["<img src='./images-landingpage/left button.png' style='height: 32px; width: 32px;'>",
-                "<img src='./images-landingpage/right button.png' style='height: 32px; width: 32px;'>"],
+    navText : ["<img src='/images-landingpage/left_button.png' style='height: 32px; width: 32px;'>",
+                "<img src='/images-landingpage/right_button.png' style='height: 32px; width: 32px;'>"],
     responsive:{
         0:{
             items:1
