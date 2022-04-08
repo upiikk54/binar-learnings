@@ -64,11 +64,6 @@ class App {
         col.innerHTML = car.render();
         baris.appendChild(col);
       });
-    // Car.list.forEach((car) => {
-    //   const node = document.createElement("div");
-    //   node.innerHTML = car.render();
-    //   this.carContainerElement.appendChild(node);
-    // });
   };
 
   async load() {
