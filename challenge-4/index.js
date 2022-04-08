@@ -24,7 +24,7 @@
 // node js native
 const http = require("http");
 const {
-    PORT = 8087
+    PORT =3087
 } = process.env; // Ambil port dari environment variable
 const HOST = "localhost";
 
@@ -42,7 +42,7 @@ function onRequest(req, res) {
             });
             res.end(html);
         });
-    } else if (url === "/caro_mobil.html" || url === "/cari") {
+    } else if (url === "./cari_mobil.html" || url === "/cari") {
         fs.readFile("./public/cari_mobil.html", "UTF-8", function (err, html) {
             res.writeHead(200, {
                 "Content-Type": "text/html"
@@ -50,7 +50,7 @@ function onRequest(req, res) {
             res.end(html);
         });
     } else if (url === "/getcars") {
-        const dataPath = path.join(__dirname, "./data", "/car.json");
+        const dataPath = path.join(__dirname, "/data", "/cars.json");
         const fileStream = fs.createReadStream(dataPath, "UTF-8");
         res.writeHead(200, {
             "Content-Type": "application/json"
