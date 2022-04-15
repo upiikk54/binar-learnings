@@ -1,13 +1,6 @@
 const instagramService = require("../services/instagramService");
 
 const register = async (req, res) => {
-    const filteredByEmail = Users.filter((a) =>{
-        if (a.email != email){
-            return;
-        }
-        return a;
-    })
-    Users = filteredByEmail
     const {
         name,
         email,
@@ -20,9 +13,35 @@ const register = async (req, res) => {
         password
     });
 
-    res.status(201).send(registerUsers);
+    res.status(201).send({
+        message: `${name} registered successfuly`,
+        registerUsers
+    });
+};
+
+const login = async (req, res) => {
+    const {
+        email,
+        password
+    } = req.query;
+
+    const loginUsers = await instagramService.login({
+        email,
+        password
+    });
+
+    res.status(201).send(loginUsers);
+};
+
+const getAll = async (req, res) => {
+    // Manggil Service Get Books
+    const getUsers = await instagramService.getAll();
+
+    res.send(getUsers);
 };
 
 module.exports = {
-    register
+    register,
+    getAll,
+    login
 };

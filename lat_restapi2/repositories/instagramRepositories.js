@@ -26,14 +26,14 @@ let Users = [{
         name: "praditya luthfi",
         email: "luthfi@gmail.com",
         password: "luthfi12",
-        token: "111-luthfi@gmail.com"
+        token: ""
     },
     {
         id: 112,
         name: "perdian lalu",
         email: "perdian@gmail.com",
         password: "perdian12",
-        token: "112-perdian@gmail.com"
+        token: ""
 
     },
     {
@@ -41,41 +41,57 @@ let Users = [{
         name: "rio geraldi",
         email: "rio@gmail.com",
         password: "riogeraldi12",
-        token: "113-rio@gmail.com"
+        token: ""
     }
 ];
 
 class instagramRepository {
+    static async getAll() {
+        return Users;
+    }
+
     static async register({
         name,
         email,
         password
     }) {
         const generatedID = await generator.generateID();
-        
-        const filteredByEmail = Users.filter((a) =>{
-            if (a.email != email){
-                return;
-            }
-            return a;
-        })
-        Users = filteredByEmail
+
+        if (Users.find((user) => user.email === email)) {
+
+            return `${email} allready registered`;
+        }
+
         Users.push({
             id: generatedID,
             name,
             email,
-            password,
-            token: `${id}-${email}`
+            password
         });
 
         return {
             id: generatedID,
             name,
             email,
-            password,
-            token: `${id}-${email}`
+            password
         };
     }
+
+    static async login({
+        email,
+        password
+    }) {
+        const filterUsersByQuery = Users.filter((a) => {
+            if (a.email != email || a.password != password) {
+                return {Message: "incorrect email and password"};
+            }
+            a.token = `${a.id}-${a.email}`
+            return a;
+        });
+        return filterUsersByQuery;
+    }
+
+
 }
 
 module.exports = instagramRepository;

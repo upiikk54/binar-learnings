@@ -8,7 +8,9 @@ app.use(express.json());
 const instagramController = require("./controllers/instagramController");
 
 // Define Routes
-app.get("/books", instagramController.register);
+app.get("/getAll", instagramController.getAll);
+app.post("/register", instagramController.register);
+app.get("/login", instagramController.login);
 
 
 
