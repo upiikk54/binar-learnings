@@ -8,7 +8,7 @@ const authenticate = async (req, res, next) => {
     }
 
     res.status(401).send({
-        message: "Silakan login terlebih dahulu",
+        message: "Silakan login dulu ngab!",
     });
 
     return;

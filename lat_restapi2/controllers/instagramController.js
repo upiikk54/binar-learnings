@@ -38,6 +38,25 @@ const postingan = async (req, res) => {
     });
 };
 
+const updatePostingan = async (req, res) => {
+    const {
+        title,
+        description
+    } = req.body;
+    const {
+        id
+    } = req.params;
+    const updatePostsById = await instagramService.updatePostingan({
+        id,
+        title,
+        description
+    });
+
+
+
+    res.status(200).send(updatePostsById);
+}
+
 const login = async (req, res) => {
     const {
         email,
@@ -61,9 +80,21 @@ const getAll = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     // Manggil Service Get Books
-    const getPosts = await instagramService.getAllPosts();
+    const { user_id } = req.query;
+    const getPosts = await instagramService.getAllPosts({user_id});
 
     res.send(getPosts);
+};
+
+const deletePostsById = async (req, res) => {
+    const {
+        id
+    } = req.params;
+    const deletePostsById = await instagramService.deletePostsById({
+        id
+    });
+
+    res.status(200).send(deletePostsById);
 };
 
 module.exports = {
@@ -71,5 +102,7 @@ module.exports = {
     getAll,
     login,
     postingan,
-    getAllPosts
+    getAllPosts,
+    updatePostingan,
+    deletePostsById
 };

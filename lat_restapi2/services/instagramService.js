@@ -34,9 +34,9 @@ class instagramService {
         return getUsers;
     }
 
-    static async getAllPosts() {
+    static async getAllPosts({user_id}) {
         // Manggil repo get all books
-        const getPosts = await instagramRepository.getAllPosts();
+        const getPosts = await instagramRepository.getAllPosts({user_id});
 
         return getPosts;
     }
@@ -53,6 +53,32 @@ class instagramService {
         });
 
         return postingan;
+    }
+
+    static async updatePostingan({
+        id,
+        title,
+        description
+    }) {
+        // Manggil repo get by id books
+        const updatePostsById = await instagramRepository.updatePostingan({
+            id,
+            title,
+            description
+        });
+
+        return updatePostsById;
+    }
+
+    static async deletePostsById({
+        id
+    }) {
+        // Manggil repo get by id books 
+        const deletePostsById = await instagramRepository.deletePostsById({
+            id
+        });
+
+        return deletePostsById;
     }
 
 }

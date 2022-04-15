@@ -50,7 +50,16 @@ class instagramRepository {
         return Users;
     }
 
-    static async getAllPosts() {
+    static async getAllPosts({user_id}) {
+        if(user_id){
+            const filterPostsByQuery = Posts.filter((a) => {
+                if (a.user_id == user_id) {
+                    return user_id;
+                }
+            });
+            
+            Posts = filterPostsByQuery;
+        }
         return Posts;
     }
 
@@ -117,6 +126,49 @@ class instagramRepository {
             title,
             description
         };
+    }
+
+    static async updatePostingan({
+        id,
+        title,
+        description,
+    }) {
+        let updatedPosts = {};
+        const updatePosts = Posts.filter((c) => {
+            if (c.id == id) {
+                c.title = title;
+                c.description = description;
+
+                updatedPosts = {
+                    id: c.id,
+                    title: c.title,
+                    description: c.description
+                }
+            }
+            return c;
+        });
+        Posts = updatePosts
+        return updatedPosts;
+    }
+
+    static async deletePostsById({id}){
+        let deletedPosts = {};
+        const filteredPosts = Posts.filter((b) => {
+            if(b.id == id){
+
+                deletedPosts = {
+                    id: b.id,
+                    user_id: b.user_id,
+                    title: b.title,
+                    description: b.description
+                };
+            }else{
+                return b;
+            }
+        });
+
+        Posts = filteredPosts;
+        return deletedPosts;
     }
 
 
