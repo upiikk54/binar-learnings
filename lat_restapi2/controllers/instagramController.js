@@ -19,6 +19,25 @@ const register = async (req, res) => {
     });
 };
 
+const postingan = async (req, res) => {
+    const {
+        user_id,
+        title,
+        description
+    } = req.body;
+
+    const postingan = await instagramService.postingan({
+        user_id,
+        title,
+        description
+    });
+
+    res.status(201).send({
+        message: `${user_id} post success`,
+        postingan
+    });
+};
+
 const login = async (req, res) => {
     const {
         email,
@@ -40,8 +59,17 @@ const getAll = async (req, res) => {
     res.send(getUsers);
 };
 
+const getAllPosts = async (req, res) => {
+    // Manggil Service Get Books
+    const getPosts = await instagramService.getAllPosts();
+
+    res.send(getPosts);
+};
+
 module.exports = {
     register,
     getAll,
-    login
+    login,
+    postingan,
+    getAllPosts
 };

@@ -7,10 +7,15 @@ app.use(express.json());
 // Import Controllers
 const instagramController = require("./controllers/instagramController");
 
+// import Middlewares
+const { authenticate } = require("./middlewares/authentication");
+
 // Define Routes
 app.get("/getAll", instagramController.getAll);
 app.post("/register", instagramController.register);
 app.get("/login", instagramController.login);
+app.post("/Posts", authenticate,  instagramController.postingan);
+app.get("/Posts", instagramController.getAllPosts);
 
 
 

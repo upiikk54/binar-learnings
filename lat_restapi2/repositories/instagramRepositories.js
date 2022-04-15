@@ -50,6 +50,10 @@ class instagramRepository {
         return Users;
     }
 
+    static async getAllPosts() {
+        return Posts;
+    }
+
     static async register({
         name,
         email,
@@ -83,12 +87,36 @@ class instagramRepository {
     }) {
         const filterUsersByQuery = Users.filter((a) => {
             if (a.email != email || a.password != password) {
-                return {Message: "incorrect email and password"};
+                return {
+                    Message: "incorrect email and password"
+                };
             }
             a.token = `${a.id}-${a.email}`
             return a;
         });
         return filterUsersByQuery;
+    }
+
+    static async postingan({
+        user_id,
+        title,
+        description
+    }) {
+        const generatedID = await generator.generateID();
+
+        Posts.push({
+            id: generatedID,
+            user_id,
+            title,
+            description
+        });
+
+        return {
+            id: generatedID,
+            user_id,
+            title,
+            description
+        };
     }
 
 

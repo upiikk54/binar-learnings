@@ -33,6 +33,28 @@ class instagramService {
 
         return getUsers;
     }
+
+    static async getAllPosts() {
+        // Manggil repo get all books
+        const getPosts = await instagramRepository.getAllPosts();
+
+        return getPosts;
+    }
+
+    static async postingan({
+        user_id,
+        title,
+        description
+    }) {
+        const postingan = await instagramRepository.postingan({
+            user_id,
+            title,
+            description
+        });
+
+        return postingan;
+    }
+
 }
 
 module.exports = instagramService;
