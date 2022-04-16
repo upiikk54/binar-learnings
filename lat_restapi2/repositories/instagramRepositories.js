@@ -50,14 +50,16 @@ class instagramRepository {
         return Users;
     }
 
-    static async getAllPosts({user_id}) {
-        if(user_id){
+    static async getAllPosts({
+        user_id
+    }) {
+        if (user_id) {
             const filterPostsByQuery = Posts.filter((a) => {
                 if (a.user_id == user_id) {
                     return user_id;
                 }
             });
-            
+
             Posts = filterPostsByQuery;
         }
         return Posts;
@@ -72,7 +74,9 @@ class instagramRepository {
 
         if (Users.find((user) => user.email === email)) {
 
-            return `${email} allready registered`;
+            return {
+                message: `${email} allready registered`
+            };
         }
 
         Users.push({
@@ -83,10 +87,13 @@ class instagramRepository {
         });
 
         return {
-            id: generatedID,
-            name,
-            email,
-            password
+            message: 'success registered',
+            registered_user: {
+                id: generatedID,
+                name,
+                email
+            }
+
         };
     }
 
@@ -94,16 +101,25 @@ class instagramRepository {
         email,
         password
     }) {
-        const filterUsersByQuery = Users.filter((a) => {
-            if (a.email != email || a.password != password) {
+        let token = ""
+        const updatedUsers = Users.filter((a) => {
+            if (a.email == email) {
+                if (a.password == password) {
+                    a.token = `${a.id}-${a.email}`
+                    token = a.token;
+                }
+            } else {
                 return {
-                    Message: "incorrect email and password"
-                };
+                    message: "email tidak terdaftar"
+                }
             }
-            a.token = `${a.id}-${a.email}`
             return a;
         });
-        return filterUsersByQuery;
+        Users = updatedUsers;
+        console.log(token);
+        return {
+            token
+        };
     }
 
     static async postingan({
@@ -151,10 +167,12 @@ class instagramRepository {
         return updatedPosts;
     }
 
-    static async deletePostsById({id}){
+    static async deletePostsById({
+        id
+    }) {
         let deletedPosts = {};
         const filteredPosts = Posts.filter((b) => {
-            if(b.id == id){
+            if (b.id == id) {
 
                 deletedPosts = {
                     id: b.id,
@@ -162,7 +180,7 @@ class instagramRepository {
                     title: b.title,
                     description: b.description
                 };
-            }else{
+            } else {
                 return b;
             }
         });

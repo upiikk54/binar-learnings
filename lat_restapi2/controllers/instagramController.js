@@ -14,8 +14,7 @@ const register = async (req, res) => {
     });
 
     res.status(201).send({
-        message: `${name} registered successfuly`,
-        registerUsers
+        data: registerUsers
     });
 };
 
@@ -33,7 +32,7 @@ const postingan = async (req, res) => {
     });
 
     res.status(201).send({
-        message: `${user_id} post success`,
+        message: `user_id ${user_id} post success`,
         postingan
     });
 };
@@ -61,14 +60,14 @@ const login = async (req, res) => {
     const {
         email,
         password
-    } = req.query;
+    } = req.body;
 
-    const loginUsers = await instagramService.login({
+    const {token} = await instagramService.login({
         email,
         password
     });
 
-    res.status(201).send(loginUsers);
+    res.status(200).send({ message: 'login success',token});
 };
 
 const getAll = async (req, res) => {

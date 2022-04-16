@@ -19,12 +19,12 @@ class instagramService {
         email,
         password
     }) {
-        const loginUser = await instagramRepository.login({
+        const { token } = await instagramRepository.login({
             email,
             password,
         });
-
-        return loginUser;
+        console.log(token);
+        return {token};
     }
 
     static async getAll() {

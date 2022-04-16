@@ -13,7 +13,7 @@ const { authenticate } = require("./middlewares/authentication");
 // Define Routes
 app.get("/getAll", instagramController.getAll);
 app.post("/register", instagramController.register);
-app.get("/login", instagramController.login);
+app.post("/login", instagramController.login);
 app.post("/Posts", authenticate,  instagramController.postingan);
 app.get("/Posts", instagramController.getAllPosts);
 app.put("/posts/:id", authenticate, instagramController.updatePostingan);
