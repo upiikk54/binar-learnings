@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   posts.init({
-    id: {
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     user_id: DataTypes.INTEGER

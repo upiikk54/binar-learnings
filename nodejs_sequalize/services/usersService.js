@@ -19,6 +19,43 @@ class usersService {
 
         return createUsers;
     }
+
+    static async updateUsersById({
+        id,
+        name,
+        email
+    }) {
+        // Manggil repo get by id books
+        const updateUsersById = await usersRepository.updateUsersById({
+            id,
+            name,
+            email
+        });
+
+        return updateUsersById;
+    }
+
+    static async deleteUserById({
+        id
+    }) {
+        // Manggil repo get by id books 
+        const deleteUserById = await usersRepository.deleteUserById({
+            id
+        });
+
+        return deleteUserById;
+    }
+
+    static async getUsersById({
+        id
+    }) {
+        // Manggil repo get by id books
+        const filterUsersById = await usersRepository.getUsersById({
+            id
+        });
+
+        return filterUsersById;
+    }
 }
 
 module.exports = usersService;
