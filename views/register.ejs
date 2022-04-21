@@ -1,0 +1,59 @@
+<%- include('layouts/header')%>    
+    <div class="section purchased">
+        <div class="container">
+            <form onsubmit="return false" id="form1">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">First Name</label>
+                    <input type="text" class="form-control first-name" id="exampleInputPassword1">
+                    <p class="showMeFirstName"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                    <input type="text" class="form-control last-name" id="exampleInputPassword1">
+                    <p class="showMeLastName"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <p class="showMeEmail"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="1" class="form-label">Password</label>
+                    <input type="password" class="form-control passwordValue" id="1">
+                    <p class="showMePassword"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="1" class="form-label">Tanggal Lahir</label>
+                    <input type="date" class="form-control birthday" id="1">
+                    <p class="showMeBirthday"></p>
+                </div>
+                Jenis Kelamin
+                <div class="mb-3 jkForm">
+                    <div class="form-check">
+                        <input class="form-check-input jk" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Laki-laki">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Laki-laki
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input jk" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Perempuan">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Perempuan
+                        </label>
+                    </div>
+                </div>
+                <p class="showMeJK"></p>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Profile Picture</label>
+                    <input type="file" class="form-control file-submit" id="exampleInputPassword1">
+                    <p class="showMeFile"></p>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">I Agree With The Term of Services</label>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+<%- include('layouts/footer')%>

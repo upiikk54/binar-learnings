@@ -1,0 +1,110 @@
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.size-profile{
+  width: 37px; 
+  height: 37px;
+}
+
+.size-brand{
+  width: 35px;
+  height: 35px;
+}
+
+.bg-konten{
+  background-color: #E5E5E5 !important;
+}
+
+.bg-blue{
+  background-color: #0D28A6 !important;
+}
+
+.sizebg{
+  width: 85px;
+}
+
+.side {
+  padding: 15px 1.7rem;
+}
+
+.middle {
+  margin: auto !important;
+}
+
+.bordernone {
+  border: none;
+}
+
+.post-icon{
+  margin-left: 30px;
+}
+
+.text-car{
+  margin-left: 20px;
+}
+
+.listcar{
+  outline-style: solid; 
+  outline-color: #0D28A6;
+  color: #0D28A6 !important;
+  background-color: #CFD4ED !important;
+}
+
+.btn-edit{
+  background-color: #5CB85F !important;
+  color: white !important;
+}
+
+.btn-delete{
+  outline-style: solid;
+  outline-color: red !important;
+  color: red !important;
+}
+
+.post-image{
+  margin-left: 175px;
+}
+
+.post-save{
+  margin-top: 200px;
+}
