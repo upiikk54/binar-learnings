@@ -24,6 +24,17 @@ class carsRepository {
         return createCars;
     }
 
+    static async getById({
+        id
+    }) {
+        const getByCarsId = await cars.findOne({
+            where: {
+                id
+            }
+        });
+        return getByCarsId;
+    }
+
     static async updateCarsById({
         id,
         name,
@@ -31,22 +42,28 @@ class carsRepository {
         size,
         photo
     }) {
-        const getById = {
-            where: {
-                id
-            }
-        }
-
-        let updatedCars = {};
         const updateCarsById = cars.update({
             name,
             price,
             size,
             photo
-        }, getById)
+        }, {
+            where: {
+                id
+            }
+        })
+        return updateCarsById;
+    }
 
-        updatedCars = updateCarsById;
-        return updatedCars;
+    static async deleteCarsById({
+        id,
+    }) {
+        // let deletedUsers = {};
+        const deleteCarsById = cars.destroy({
+            where: { id }
+        })
+        // users = deletedUsers;
+        return deleteCarsById;
     }
 
 }

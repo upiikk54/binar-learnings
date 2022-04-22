@@ -13,29 +13,26 @@ app.use(express.static(path.join(__dirname, "public")))
 
 // import controller
 const carsController = require("./controllers/carsController");
+const carsService = require("./services/carsService");
 
 
 // endpoint crud
 app.post("/cars", carsController.createCars);
-app.put("/cars/:id", carsController.updateCarsById);
+// app.get("/updateById", carsController.getById);
+app.post("/cars/:id", carsController.updateCarsById);
+app.post("/deleteCars/:id", carsController.deleteCarsById);
 
 
 // define endpoint ejs
-app.get("/", async (req, res) =>{
-    const getCars = await carsController.getCars();
-    res.render('index', {
-        cars: getCars,
-    })
-})
+app.get("/", carsController.getCarsAll)
 
 
 app.get("/cars", (req, res) =>{
     res.render('addNewCar')
 })
 
-app.get("/update", (req, res) =>{
-    res.render('updateCars')
-})
+
+app.get("/update/:id", carsController.renderCarById);
 
 
 app.listen(PORT, () => {

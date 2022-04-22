@@ -117,21 +117,60 @@
 
                 <div class="container mt-4">
                     <div class="row">
-                        <% cars.map((car) => { %>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
+                        <% cars.map((car)=> { %>
+                            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                                 <div class="card" style="width: 395px;">
-                                    <img src="<%= car.photo %>" class="card-img-top" style="width: 392px; height: 250px;" alt="...">
+                                    <img src="<%= car.photo %>" class="card-img-top"
+                                        style="width: 392px; height: 250px;" alt="...">
                                     <div class="card-body">
-                                        <p class="card-title"><%= car.name %></p>
+                                        <p class="card-title">
+                                            <%= car.name %>
+                                        </p>
                                         <h5 class="card-text"> Rp. <%= car.price %> /hari</h5>
-                                        <p class="card-title"><%= car.updatedAt %></p>
+                                        <p class="card-title">
+                                            <%= car.updatedAt %>
+                                        </p>
                                         <div class="row">
                                             <div class="col">
-                                                <a href="#" class="btn btn-delete px-4 py-2"><img
+                                                <a href="/delete/<%= car.id %>" type="button"
+                                                    class="btn btn-outline-danger delete-button px-4 py-2"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><img
                                                         src="./images/Header/fi_trash-2.png" alt="">Delete</a>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body text-center">
+                                                                <h5 class="fw-bold">Menghapus Data Mobil</h5>
+                                                                <p class="px-5 mx-4" style="font-size: 14px">
+                                                                    Setelah dihapus, data mobil tidak dapat
+                                                                    dikembalikan.
+                                                                    Yakin ingin menghapus?
+                                                                </p>
+                                                            </div>
+                                                            <div
+                                                                class="modal-footer justify-content-center border-top-0">
+                                                                <form method="post"
+                                                                    action="http://localhost:8087/deleteCars/ <%= car.id %>">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary button-allow">
+                                                                        YA
+                                                                    </button>
+                                                                </form>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary button-deny"
+                                                                    data-bs-dismiss="modal">
+                                                                    TIDAK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div id="edit" class="col">
-                                                <a href="/update" class="btn btn-edit px-5 py-2"><img
+                                                <a href="/update/<%= car.id %>" class="btn btn-edit px-5 py-2"><img
                                                         src="./images/Header/fi_edit.png" alt="">Edit</a>
                                             </div>
                                         </div>
@@ -139,7 +178,6 @@
                                 </div>
                             </div>
                             <% }) %>
-
                     </div>
                 </div>
             </div>

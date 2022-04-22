@@ -23,6 +23,12 @@ class carsService {
         return createCars;
     }
 
+    static async getById({id}){
+        const getByCarsId = await carsRepository.getById({id});
+
+        return getByCarsId;
+    }
+
     static async updateCarsById({
         id,
         name,
@@ -40,6 +46,17 @@ class carsService {
         });
 
         return updateCarsById;
+    }
+
+    static async deleteCarsById({
+        id
+    }) {
+        // Manggil repo get by id books 
+        const deleteCarsById = await carsRepository.deleteCarsById({
+            id
+        });
+
+        return deleteCarsById;
     }
 }
 

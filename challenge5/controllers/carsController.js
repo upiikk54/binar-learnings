@@ -1,6 +1,6 @@
 const carsService = require("../services/carsService");
 
-const getCars = async (req, res) =>{
+const getCars = async (req, res) => {
     const getCars = await carsService.getCars();
 
     // respon API Microservices
@@ -49,8 +49,33 @@ const updateCarsById = async (req, res) => {
     res.redirect("/");
 }
 
+const renderCarById = async (req, res) =>{
+    const { id } = req.params;
+    const car = await carsService.getById({ id });
+    res.render('updateCars', {
+        car: car,
+    })
+}
+
+const getCarsAll = async (req, res) =>{
+    const getCars = await carsService.getCars();
+    res.render('index', {
+        cars: getCars,
+    })
+}
+
+const deleteCarsById = async (req, res) =>{
+    const { id } = req.params;
+    const deleteCarsById = await carsService.deleteCarsById({ id });
+    
+    res.redirect("/")
+}
+
 module.exports = {
     getCars,
     createCars,
-    updateCarsById
+    updateCarsById,
+    renderCarById,
+    getCarsAll,
+    deleteCarsById
 };
