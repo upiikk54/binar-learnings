@@ -1,10 +1,8 @@
 const usersRepository = require("../repositories/userRepository");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const { JWT } = require("../lib/const")
 const SALT_ROUND = 10;
-const JWT_SECRET = "jwt_secret";
-const JWT_EXPIRED = "24h";
 
 class AuthService {
     static async register({
@@ -144,8 +142,8 @@ class AuthService {
                         id: getUser.id,
                         email: getUser.email,
                     },
-                    JWT_SECRET, {
-                        expiresIn: JWT_EXPIRED,
+                    JWT.SECRET, {
+                        expiresIn: JWT.EXPIRED,
                     }
                 );
 

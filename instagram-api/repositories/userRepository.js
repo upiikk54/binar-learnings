@@ -1,5 +1,5 @@
 const {
-    users
+    users, posts
 } = require("../models");
 
 class UsersRepository {
@@ -27,6 +27,18 @@ class UsersRepository {
         });
 
         return createdUser;
+    }
+
+    static async getPostsById({
+        id
+    }) {
+        const getPosts = await posts.findAll({
+            where: {
+                user_id: id
+            }
+        });
+
+        return getPosts;
     }
 }
 

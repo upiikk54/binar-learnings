@@ -8,10 +8,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Import Controllers
 const authController = require("./controllers/authController");
+const postsController = require("./controllers/postsController");
+const usersController = require("./controllers/usersController");
 
-// Define Routes
+// import middlewares
+const middlewares = require("./middlewares/auth");
+
+// Define Routes auth
 app.post("/auth/register", authController.register);
 app.post("/auth/login", authController.login);
+
+// define routes posts
+app.post("/posts", middlewares.authenticate, postsController.create);
+app.delete("/posts/:id", middlewares.authenticate, postsController.deleteById);
+app.put("/posts/:id", middlewares.authenticate, postsController.updateById);
+
+
+app.get("/users/:id/posts", usersController.getPostsById);
 
 app.listen(PORT, () => {
     console.log(`Server berhasil berjalan di port http://localhost:${PORT}`);
