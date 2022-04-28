@@ -23,7 +23,7 @@ app.post("/products", authenticate, productsController.create);
 app.delete("/products/:id", authenticate, productsController.deleted);
 app.put("/products/:id", authenticate, productsController.updated);
 app.get("/shops/:id/products", shopsController.getProducts);
-app.put("/shops/:id", authenticate, shopsController.updateShops)
+app.put("/shops/:id", authenticate, shopsController.updateShops);
 
 app.listen(PORT, () => {
     console.log(`Server berhasil berjalan di port http://localhost:${PORT}`);

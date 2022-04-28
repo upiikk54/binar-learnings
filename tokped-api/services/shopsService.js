@@ -21,6 +21,7 @@ class shopsService {
     }
 
     static async updateShops({
+        shop_id,
         id,
         email,
         name,
@@ -74,6 +75,17 @@ class shopsService {
                 status: false,
                 code_status: 400,
                 message: "password minimal 5 karakter",
+                data: {
+                    update_shops: null,
+                },
+            };
+        }
+
+        if(shop_id !== id){
+            return {
+                status: false,
+                code_status: 401,
+                message: "anda tidak boleh edit data orang lain.",
                 data: {
                     update_shops: null,
                 },
