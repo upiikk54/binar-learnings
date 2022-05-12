@@ -1,6 +1,9 @@
 const {
     cars
 } = require("../models");
+const {
+    Op
+} = require("sequelize");
 
 class carsRepository {
     static async create({
@@ -48,6 +51,24 @@ class carsRepository {
 
         return getCars;
     }
+
+    static async getAllCars({
+        availableAt,
+        isWithDriver
+    }) {
+        if (isWithDriver && availableAt) {
+            const filteredCars = await cars.findAll({
+                where: {
+                    isWithDriver, availableAt
+                }
+            });
+
+            return filteredCars;
+        }
+
+        return cars;
+    }
+
 
     static async update({
         id,

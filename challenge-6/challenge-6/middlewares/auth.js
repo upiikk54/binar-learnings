@@ -50,7 +50,7 @@ const isSuperAdmin = async (req, res, next) => {
 
     return res.status(401).send({
         status: false,
-        message: "Akun anda harus superamin untuk mengakses resource ini.",
+        message: "Akun anda harus superadmin untuk mengakses resource ini.",
         data: null,
     });
 };

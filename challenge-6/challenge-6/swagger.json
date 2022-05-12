@@ -79,7 +79,10 @@
                 }],
                 "responses": {
                     "201": {
-                        "description": "Success registering Admin."
+                        "description": "Success registering Admin.",
+                        "schema": {
+                            "$ref": "#/definitions/Register"
+                        }
                     }
                 }
             }
@@ -191,21 +194,33 @@
                 }
             }
         },
-        "/cars/filtered": {
+        "/cars/filtered?": {
+            "parameters": [{
+                "name": "availableAt",
+                "in": "query",
+                "required": true,
+                "description": "ID of Cars that we want to delete",
+                "type": "string"
+            }],
             "get": {
                 "tags": ["Cars"],
                 "summary": "Filtered Cars Endpoint",
                 "parameters": [{
-                    "name": "filtered Cars",
-                    "in": "body",
+                    "name": "isWithDriver",
+                    "in": "query",
+                    "required": true,
+                    "type": "boolean",
                     "description": "filtered data cars",
                     "schema": {
-                        "$ref": "#/definitions/filter"
+                        "$ref": "#/definitions/ManaggingCars"
                     }
                 }],
                 "responses": {
-                    "201": {
-                        "description": "Success filtered Cars."
+                    "200": {
+                        "description": "Success filtered Cars.",
+                        "schema": {
+                            "$ref": "#/definitions/ManaggingCars"
+                        }
                     }
                 }
             }
@@ -294,6 +309,9 @@
             "properties": {
                 "availableAt": {
                     "type": "string"
+                },
+                "isWithDriver": {
+                    "type": "boolean"
                 }
             }
         }

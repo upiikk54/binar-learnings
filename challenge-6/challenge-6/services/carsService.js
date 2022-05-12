@@ -219,7 +219,7 @@ class carsService {
 
             return {
                 status: true,
-                code_status: 201,
+                code_status: 200,
                 message: "data cars berhasil ditampilkan",
                 data: {
                     getCars: getCars,
@@ -481,23 +481,21 @@ class carsService {
     }
 
     static async filtered({
-        availableAt
+        availableAt,
+        isWithDriver
     }) {
         try {
-            const getCars = await carsRepository.getCars();
-
-            const filtered = getCars.filter((cars) => {
-                if (cars.availableAt.substring(0, 10) == availableAt.substring(0, 10)) {
-                    return cars;
-                }
-            })
+            const getAllCars = await carsRepository.getAllCars({
+                availableAt,
+                isWithDriver
+            });
 
             return {
                 status: true,
-                code_status: 201,
+                code_status: 200,
                 message: "data cars berhasil ditampilkan",
                 data: {
-                    filtered: filtered,
+                    filteredCars: getAllCars,
                 },
             };
         } catch (err) {

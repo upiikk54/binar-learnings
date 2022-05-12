@@ -30,7 +30,7 @@ app.get("/cars", middlewares.authenticate, middlewares.roles, carsController.get
 app.post("/cars/create", middlewares.authenticate, middlewares.roles, carsController.create);
 app.put("/cars/update/:id", middlewares.authenticate, middlewares.roles, carsController.update);
 app.delete("/cars/delete/:id", middlewares.authenticate, middlewares.roles, carsController.deleted);
-app.get("/cars/filtered", carsController.filtered )
+app.get("/cars/filtered?", carsController.filtered )
 
 // API Documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
