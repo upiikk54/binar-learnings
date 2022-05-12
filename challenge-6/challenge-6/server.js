@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 8087;
 const bodyParser = require("body-parser");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,6 +32,8 @@ app.put("/cars/update/:id", middlewares.authenticate, middlewares.roles, carsCon
 app.delete("/cars/delete/:id", middlewares.authenticate, middlewares.roles, carsController.deleted);
 app.get("/cars/filtered", carsController.filtered )
 
+// API Documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
     console.log(`Server berhasil berjalan di port http://localhost:${PORT}`);
