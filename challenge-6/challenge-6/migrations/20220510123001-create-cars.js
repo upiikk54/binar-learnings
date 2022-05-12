@@ -8,6 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING
       },
+      createdBy: {
+        type: Sequelize.STRING
+      },
+      updatedBy: {
+        type: Sequelize.STRING
+      },
+      deletedBy: {
+        type: Sequelize.STRING
+      },
       plate: {
         type: Sequelize.STRING
       },

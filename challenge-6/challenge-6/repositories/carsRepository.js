@@ -4,6 +4,8 @@ const {
 
 class carsRepository {
     static async create({
+        createdBy,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -20,6 +22,8 @@ class carsRepository {
         isWithDriver
     }) {
         const created_Cars = await cars.create({
+            createdBy,
+            updatedBy,
             plate,
             manufacture,
             model,
@@ -47,6 +51,7 @@ class carsRepository {
 
     static async update({
         id,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -64,6 +69,7 @@ class carsRepository {
     }) {
         const updated_cars = await cars.update({
             plate,
+            updatedBy,
             manufacture,
             model,
             image,
@@ -84,6 +90,18 @@ class carsRepository {
         });
 
         return updated_cars;
+    }
+
+    static async deleted({
+        id
+    }) {
+        const deletedCars = await cars.destroy({
+            where: {
+                id
+            }
+        });
+
+        return deletedCars;
     }
 }
 

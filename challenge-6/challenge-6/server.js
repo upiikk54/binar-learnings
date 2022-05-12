@@ -14,8 +14,12 @@ const carsController = require("./controllers/carsController");
 const middlewares = require("./middlewares/auth");
 
 // define routes auth
+// register member
 app.post("/auth/register", authController.register);
+
+// register admin
 app.post("/auth/register/admin", middlewares.authenticate, middlewares.isSuperAdmin, authController.register);
+
 app.post("/auth/login", authController.login);
 app.get("/auth/me", middlewares.authenticate, authController.currentUser);
 
@@ -23,7 +27,8 @@ app.get("/auth/me", middlewares.authenticate, authController.currentUser);
 app.get("/cars", middlewares.authenticate, middlewares.roles, carsController.getCars);
 app.post("/cars/create", middlewares.authenticate, middlewares.roles, carsController.create);
 app.put("/cars/update/:id", middlewares.authenticate, middlewares.roles, carsController.update);
-// app.delete("/cars/delete/:id", middlewares.authenticate, middlewares.roles, carsController.delete);
+app.delete("/cars/delete/:id", middlewares.authenticate, middlewares.roles, carsController.deleted);
+app.get("/cars/filtered", carsController.filtered )
 
 
 app.listen(PORT, () => {

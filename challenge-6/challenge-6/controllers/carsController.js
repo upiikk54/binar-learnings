@@ -18,12 +18,17 @@ const create = async (req, res) => {
         isWithDriver
     } = req.body;
 
+    const createdBy = req.user.name
+    const updatedBy = req.user.name
+
     const {
         status,
         code_status,
         message,
         data
     } = await carsService.create({
+        createdBy,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -47,8 +52,13 @@ const create = async (req, res) => {
     });
 };
 
-const getCars = async (req, res) =>{
-    const {status, code_status, message, data} = await carsService.getCars();
+const getCars = async (req, res) => {
+    const {
+        status,
+        code_status,
+        message,
+        data
+    } = await carsService.getCars();
 
     res.status(code_status).send({
         status: status,
@@ -57,8 +67,11 @@ const getCars = async (req, res) =>{
     });
 }
 
+
 const update = async (req, res) => {
-    const { id } = req.params;
+    const {
+        id
+    } = req.params;
 
     const {
         plate,
@@ -77,6 +90,8 @@ const update = async (req, res) => {
         isWithDriver
     } = req.body;
 
+    const updatedBy = req.user.name
+
     const {
         status,
         code_status,
@@ -84,6 +99,7 @@ const update = async (req, res) => {
         data
     } = await carsService.update({
         id,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -107,9 +123,51 @@ const update = async (req, res) => {
     });
 };
 
+const deleted = async (req, res) => {
+    const {
+        id
+    } = req.params;
+
+    const deletedBy = req.user.name
+
+    const {
+        status,
+        code_status,
+        message,
+        data
+    } = await carsService.deleted({
+        id,
+        deletedBy
+    });
+
+    res.status(code_status).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+};
+
+const filtered = async (req, res) => {
+    const { availableAt } = req.body
+
+    const {
+        status,
+        code_status,
+        message,
+        data
+    } = await carsService.filtered({availableAt});
+
+    res.status(code_status).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+}
 
 module.exports = {
     create,
     getCars,
-    update
+    update,
+    deleted,
+    filtered
 }

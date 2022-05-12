@@ -2,6 +2,8 @@ const carsRepository = require("../repositories/carsRepository");
 
 class carsService {
     static async create({
+        createdBy,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -173,6 +175,8 @@ class carsService {
             };
 
             const createdCars = await carsRepository.create({
+                createdBy,
+                updatedBy,
                 plate,
                 manufacture,
                 model,
@@ -221,7 +225,7 @@ class carsService {
                     getCars: getCars,
                 },
             };
-        }catch (err) {
+        } catch (err) {
             return {
                 status: false,
                 code_status: 500,
@@ -235,6 +239,7 @@ class carsService {
 
     static async update({
         id,
+        updatedBy,
         plate,
         manufacture,
         model,
@@ -407,6 +412,7 @@ class carsService {
 
             const updatedCars = await carsRepository.update({
                 id,
+                updatedBy,
                 plate,
                 manufacture,
                 model,
@@ -429,6 +435,69 @@ class carsService {
                 message: "cars berhasil dupdate",
                 data: {
                     updatedCars: updatedCars,
+                },
+            };
+        } catch (err) {
+            return {
+                status: false,
+                code_status: 500,
+                message: err.message,
+                data: {
+                    registered_Users: null,
+                },
+            };
+        }
+    }
+
+    static async deleted({
+        id,
+        deletedBy
+    }) {
+        try {
+            const deletedCars = await carsRepository.deleted({
+                id,
+                deletedBy
+            });
+
+            return {
+                status: true,
+                code_status: 200,
+                message: "data cars berhasil dihapus",
+                data: {
+                    deletedCars: deletedCars,
+                },
+            }
+        } catch (err) {
+            return {
+                status: false,
+                code_status: 500,
+                message: err.message,
+                data: {
+                    registered_Users: null,
+                },
+            };
+        }
+
+    }
+
+    static async filtered({
+        availableAt
+    }) {
+        try {
+            const getCars = await carsRepository.getCars();
+
+            const filtered = getCars.filter((cars) => {
+                if (cars.availableAt.substring(0, 10) == availableAt.substring(0, 10)) {
+                    return cars;
+                }
+            })
+
+            return {
+                status: true,
+                code_status: 201,
+                message: "data cars berhasil ditampilkan",
+                data: {
+                    filtered: filtered,
                 },
             };
         } catch (err) {
