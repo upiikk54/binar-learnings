@@ -1,9 +1,6 @@
 const {
     cars
 } = require("../models");
-const {
-    Op
-} = require("sequelize");
 
 class carsRepository {
     static async create({

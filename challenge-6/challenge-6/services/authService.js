@@ -121,7 +121,7 @@ class authService {
                     code_status: 400,
                     message: "email wajib diisi",
                     data: {
-                        registered_shops: null,
+                        login_Users: null,
                     }
                 }
             };
@@ -132,7 +132,7 @@ class authService {
                     code_status: 400,
                     message: "password wajib diisi",
                     data: {
-                        registered_shops: null,
+                        login_Users: null,
                     },
                 };
             } else if (password.length < 8) {
@@ -141,7 +141,7 @@ class authService {
                     code_status: 400,
                     message: "password minimal 8 karakter",
                     data: {
-                        registered_shops: null,
+                        login_Users: null,
                     },
                 };
             }
@@ -156,7 +156,7 @@ class authService {
                     code_status: 400,
                     message: "email belum terdaftar!",
                     data:{
-                        registered_Users: null,
+                        login_Users: null,
                     },
                 };
             } else{
@@ -184,7 +184,7 @@ class authService {
                         code_status: 400,
                         message: "password anda salah, mohon isi ulang",
                         data: {
-                            registered_shops: null,
+                            login_Users: null,
                         },
                     };
                 }
@@ -195,7 +195,7 @@ class authService {
                 code_status: 500,
                 message: err.message,
                 data: {
-                    registered_Users: null,
+                    login_Users: null,
                 },
             };
         }
