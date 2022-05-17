@@ -13,7 +13,7 @@ export default function Button(props) {
         setResult(Number(valueOne) - Number(valueTwo));
     };
 
-    const multiply = (e) => {
+    const multiply = () => {
         setResult(Number(valueOne) * Number(valueTwo));
     };
 
