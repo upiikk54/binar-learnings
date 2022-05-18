@@ -3,22 +3,27 @@ import React from "react";
 import { ACTIONS } from "../libs/const";
 
 export default function Button(props) {
-    const {valueOne, valueTwo, setResult, action, text} = props;
-
+    const { valueOne, valueTwo, setResult, action, text } = props;
     const increment = () => {
-        setResult(Number(valueOne) + Number(valueTwo));
+        const valueOneInt = parseInt(valueOne.current.value);
+        const valueTwoInt = parseInt(valueTwo.current.value);
+        setResult(valueOneInt + valueTwoInt);
     };
 
     const decrement = () => {
-        setResult(Number(valueOne) - Number(valueTwo));
+        const valueOneInt = parseInt(valueOne.current.value);
+        const valueTwoInt = parseInt(valueTwo.current.value);
+        setResult(valueOneInt - valueTwoInt);
     };
 
     const multiply = () => {
-        setResult(Number(valueOne) * Number(valueTwo));
+        const valueOneInt = parseInt(valueOne.current.value);
+        const valueTwoInt = parseInt(valueTwo.current.value);
+        setResult(valueOneInt * valueTwoInt);
     };
 
     return (
-        <button
+        <button className="Button"
             onClick={() => {
                 if (action === ACTIONS.INCREMENT) return increment();
                 else if (action === ACTIONS.DECREMENT) return decrement();

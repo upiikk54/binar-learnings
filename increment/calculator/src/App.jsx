@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./components/Button";
 import { ACTIONS } from "./libs/const";
 
 function App() {
 
-  const [valueOne, setValueOne] = useState();
-  const [valueTwo, setValueTwo] = useState();
+  const valueOne = useRef(0);
+  const valueTwo = useRef(0);
+
+  // const [valueOne, setValueOne] = useState(0);
+  // const [valueTwo, setValueTwo] = useState(0);
   const [result, setResult] = useState(0);
 
 
@@ -21,37 +24,35 @@ function App() {
 
         <form>
           <label>
-            value 1: <input type="number" value={valueOne} onChange={(e) => setValueOne(e.target.value)}/>
+            value 1: <input type="number" ref={valueOne} />
             <br></br>
-            value 2: <input type="number" value={valueTwo} onChange={(e) => setValueTwo(e.target.value)} />
+            value 2: <input type="number" ref={valueTwo} />
           </label>
         </form>
         <div>
-            <Button
-              valueOne={valueOne}
-              valueTwo={valueTwo}
-              setResult={setResult}
-              action={ACTIONS.MULTIPLY}
-              text="Multiply"
-            />
-            <Button
-              valueOne={valueOne}
-              valueTwo={valueTwo}
-              setResult={setResult}
-              action={ACTIONS.DECREMENT}
-              text="Minus"
-            />
-            <Button
-              valueOne={valueOne}
-              valueTwo={valueTwo}
-              setResult={setResult}
-              action={ACTIONS.INCREMENT}
-              text="Plus"
-            />
-          </div>
-        <p>
-          <h1>{result}</h1>
-        </p>
+          <Button
+            valueOne={valueOne}
+            valueTwo={valueTwo}
+            setResult={setResult}
+            action={ACTIONS.MULTIPLY}
+            text="Multiply"
+          />
+          <Button
+            valueOne={valueOne}
+            valueTwo={valueTwo}
+            setResult={setResult}
+            action={ACTIONS.DECREMENT}
+            text="Minus"
+          />
+          <Button
+            valueOne={valueOne}
+            valueTwo={valueTwo}
+            setResult={setResult}
+            action={ACTIONS.INCREMENT}
+            text="Plus"
+          />
+        </div>
+        <h1>{result}</h1>
       </header>
     </div>
   );
