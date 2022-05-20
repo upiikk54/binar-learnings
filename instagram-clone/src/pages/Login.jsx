@@ -48,7 +48,7 @@ export default function Login() {
 
     return (
         <Container className="my-5">
-            <h1 className="mb-3">Masuk</h1>
+            <h1 className="mb-3 text-center">Masuk</h1>
             <Form onSubmit={onLogin}>
                 <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>

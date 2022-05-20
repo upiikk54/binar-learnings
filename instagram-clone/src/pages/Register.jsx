@@ -48,7 +48,7 @@ export default function Register() {
 
     return (
         <Container className="my-5">
-            <h1 className="mb-3">Registrasi</h1>
+            <h1 className="mb-3 text-center">Registrasi</h1>
             <Form onSubmit={onRegister}>
                 <Form.Group className="mb-3">
                     <Form.Label>Role</Form.Label>

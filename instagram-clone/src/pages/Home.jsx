@@ -51,9 +51,16 @@ function Home() {
       </Button>
 
       <Alert>Selamat datang {user.name}</Alert>
-      <Link to="/about">
-        <Button variant="success">Go to about page</Button>
-      </Link>
+      <div>
+
+      </div>
+        <Link to="/about">
+          <Button variant="success">Go to about page</Button>
+        </Link>
+        <Link className="ms-5" to="/create">
+          <Button variant="primary">Go to Create post page</Button>
+        </Link>
+
     </div>
   ) : (
     <Navigate to="/login" replace />
