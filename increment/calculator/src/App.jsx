@@ -6,9 +6,11 @@ import { ACTIONS } from "./libs/const";
 
 function App() {
 
+  // useRef
   const valueOne = useRef(0);
   const valueTwo = useRef(0);
 
+  // useState
   // const [valueOne, setValueOne] = useState(0);
   // const [valueTwo, setValueTwo] = useState(0);
   const [result, setResult] = useState(0);
