@@ -1,5 +1,6 @@
 const {
-    users, posts
+    users,
+    posts
 } = require("../models");
 
 class UsersRepository {
@@ -15,18 +16,44 @@ class UsersRepository {
         return getUser;
     }
 
+    static async getByID({
+        id
+    }) {
+        const getUser = await users.findOne({
+            where: {
+                id
+            }
+        });
+
+        return getUser;
+    }
+
     static async create({
         name,
         email,
-        password
+        password,
+        role
     }) {
         const createdUser = users.create({
             name,
             email,
             password,
+            role,
         });
 
         return createdUser;
+    }
+
+    static async deleteByID({
+        id
+    }) {
+        const deletedUser = await users.destroy({
+            where: {
+                id
+            }
+        });
+
+        return deletedUser;
     }
 
     static async getPostsById({

@@ -22,4 +22,28 @@ const getPostsById = async (req, res, next) => {
     });
 };
 
-module.exports = { getPostsById };
+const deleteByID = async (req, res, next) => {
+    const {
+        id
+    } = req.params;
+
+    const {
+        status,
+        status_code,
+        message,
+        data
+    } = await usersService.deleteByID({
+        id,
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+};
+
+module.exports = {
+    getPostsById,
+    deleteByID
+};

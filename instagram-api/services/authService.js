@@ -1,14 +1,17 @@
 const usersRepository = require("../repositories/userRepository");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { JWT } = require("../lib/const")
+const {
+    JWT
+} = require("../lib/const")
 const SALT_ROUND = 10;
 
 class AuthService {
     static async register({
         name,
         email,
-        password
+        password,
+        role
     }) {
         // Payload Validation
         if (!name) {
@@ -16,6 +19,17 @@ class AuthService {
                 status: false,
                 status_code: 400,
                 message: "Nama wajib diisi",
+                data: {
+                    registered_user: null,
+                },
+            };
+        }
+
+        if (!role) {
+            return {
+                status: false,
+                status_code: 400,
+                message: "Role wajib diisi",
                 data: {
                     registered_user: null,
                 },
@@ -72,6 +86,7 @@ class AuthService {
                 name,
                 email,
                 password: hashedPassword,
+                role,
             });
 
             return {

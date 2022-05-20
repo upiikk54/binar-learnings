@@ -4,7 +4,8 @@ const register = async (req, res) => {
     const {
         name,
         email,
-        password
+        password,
+        role,
     } = req.body;
 
     const {
@@ -16,12 +17,25 @@ const register = async (req, res) => {
         name,
         email,
         password,
+        role,
     });
 
     res.status(status_code).send({
         status: status,
         message: message,
         data: data,
+    });
+};
+
+const currentUser = async (req, res) => {
+    const currentUser = req.user;
+
+    res.status(200).send({
+        status: true,
+        message: "Get current user success.",
+        data: {
+            user: currentUser,
+        },
     });
 };
 
@@ -50,5 +64,6 @@ const login = async (req, res) => {
 
 module.exports = {
     register,
-    login
+    login,
+    currentUser
 };
