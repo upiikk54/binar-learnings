@@ -12,39 +12,38 @@ export default function CreatePosts() {
   const [errorResponse, setErrorResponse] = useState({
     isError: false,
     message: "",
-});
+  });
 
-const onCreate = async (e) => {
+  const onCreate = async (e) => {
     e.preventDefault();
 
     try {
       const token = localStorage.getItem("token");
-        const userToCreatePayload = {
-            title: titleField.current.value,
-            description: descriptionField.current.value,
-        };
+      const userToCreatePayload = {
+        title: titleField.current.value,
+        description: descriptionField.current.value,
+      };
 
-        const createRequest = await axios.post(
-            "http://localhost:8087/posts", userToCreatePayload, {
-              headers:{
-                Authorization: `Bearer ${token}`,
-              },
-            }
-        );
+      const createRequest = await axios.post(
+        "http://localhost:8087/posts", userToCreatePayload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      );
 
-        const createResponse = createRequest.data;
+      const createResponse = createRequest.data;
 
-        if (createResponse.status) navigate("/");
+      if (createResponse.status) navigate("/");
     } catch (err) {
-        console.log(err);
-        const response = err.response.data;
+      const response = err.response.data;
 
-        setErrorResponse({
-            isError: true,
-            message: response.message,
-        });
+      setErrorResponse({
+        isError: true,
+        message: response.message,
+      });
     }
-};
+  };
 
   return (
     <Container className="my-5">
