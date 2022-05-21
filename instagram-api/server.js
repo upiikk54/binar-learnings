@@ -26,7 +26,8 @@ app.post("/posts", middlewares.authenticate, postsController.create);
 app.delete("/posts/:id", middlewares.authenticate, postsController.deleteById);
 app.put("/posts/:id", middlewares.authenticate, postsController.updateById);
 
-
+app.get("/api/posts", postsController.getAll);
+app.get('/api/posts/:id', postsController.getById);
 app.get("/users/:id/posts", usersController.getPostsById);
 app.delete("/users/:id", middlewares.authenticate,middlewares.isAdmin, postsController.deleteById);
 

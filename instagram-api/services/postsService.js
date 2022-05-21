@@ -76,42 +76,71 @@ class postsService {
         }
     }
 
-    static async updateById({
+    static async getById({
         id,
-        user_id,
-        title,
-        description
     }) {
-        const getPost = await postsRepository.getById({
-            id
+        const getById = await postsRepository.getById({
+            id,
         });
+        return {
+            status: true,
+            status_code: 200,
+            message: "success get data",
+            data: {
+                getdata: getById,
+            },
+        };
+    }
 
-        if (getPost.user_id == user_id) {
-            const updatedPost = await postsRepository.updateById({
-                id,
-                title,
-                description,
+    static async getAll() {
+        const getAll = await postsRepository.getAll();
+
+        return {
+            status: true,
+            status_code: 200,
+            message: "Posts successfully loaded",
+            data: {
+                getDataAll: getAll,
+            },
+        };
+    }
+
+        static async updateById({
+            id,
+            user_id,
+            title,
+            description
+        }) {
+            const getPost = await postsRepository.getById({
+                id
             });
 
-            return {
-                status: true,
-                status_code: 200,
-                message: "Post updated successfully",
-                data: {
-                    updated_post: updatedPost,
-                },
-            };
-        } else {
-            return {
-                status: true,
-                status_code: 401,
-                message: "Resource Unauthorized",
-                data: {
-                    updated_post: null,
-                },
-            };
+            if (getPost.user_id == user_id) {
+                const updatedPost = await postsRepository.updateById({
+                    id,
+                    title,
+                    description,
+                });
+
+                return {
+                    status: true,
+                    status_code: 200,
+                    message: "Post updated successfully",
+                    data: {
+                        updated_post: updatedPost,
+                    },
+                };
+            } else {
+                return {
+                    status: true,
+                    status_code: 401,
+                    message: "Resource Unauthorized",
+                    data: {
+                        updated_post: null,
+                    },
+                };
+            }
         }
     }
-}
 
-module.exports = postsService;
+    module.exports = postsService;

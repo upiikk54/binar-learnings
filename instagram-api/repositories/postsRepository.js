@@ -17,6 +17,12 @@ class postsRepository {
         return createdUser;
     }
 
+    static async getAll() {
+        const getAll = await posts.findAll();
+
+        return getAll;
+    }
+
     static async getById({
         id
     }) {
