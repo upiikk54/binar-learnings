@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Form, Container, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -45,6 +46,29 @@ export default function Login() {
             });
         }
     };
+    const onLoginGoogleSuccess = async (credentialResponse) => {
+        console.log(credentialResponse);
+        try {
+            const userToLoginPayload = {
+                google_credential: credentialResponse.credential,
+            };
+
+            const loginGoogleRequest = await axios.post(
+                "http://localhost:8087/auth/login-google",
+                userToLoginPayload
+            );
+
+            const loginGoogleResponse = loginGoogleRequest.data;
+
+            if (loginGoogleResponse.status) {
+                localStorage.setItem("token", loginGoogleResponse.data.token);
+
+                navigate("/");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <Container className="my-5">
@@ -66,6 +90,16 @@ export default function Login() {
                         placeholder="Masukkan Password"
                     />
                 </Form.Group>
+                <div className="my-3">
+                    <GoogleOAuthProvider clientId="155043602177-a6mj7v3iv3ptrkfq8c0cioebm157sufu.apps.googleusercontent.com">
+                        <GoogleLogin
+                            onSuccess={onLoginGoogleSuccess}
+                            onError={() => {
+                                console.log("Login Failed");
+                            }}
+                        />
+                    </GoogleOAuthProvider>
+                </div>
                 <p>
                     Belum punya akun? Silakan <Link to="/register">Daftar</Link>
                 </p>
@@ -73,7 +107,7 @@ export default function Login() {
                     <Alert variant="danger">{errorResponse.message}</Alert>
                 )}
                 <Button className="w-100" type="submit">
-                    Daftar
+                    Masuk
                 </Button>
             </Form>
         </Container>
