@@ -90,6 +90,11 @@ export default function Register() {
                 <Button className="w-100" type="submit">
                     Daftar
                 </Button>
+                <Link to="/">
+                    <Button className="w-100 mt-3" variant='danger'>
+                        kembali
+                    </Button>
+                </Link>
             </Form>
         </Container></div>
     )

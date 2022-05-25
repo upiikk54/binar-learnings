@@ -92,7 +92,7 @@ export default function Login() {
                             placeholder="Masukkan Password"
                         />
                     </Form.Group>
-                    <div className="my-3">
+                    <div className="my-3 text-center">
                         <GoogleOAuthProvider clientId="155043602177-a6mj7v3iv3ptrkfq8c0cioebm157sufu.apps.googleusercontent.com">
                             <GoogleLogin
                                 onSuccess={onLoginGoogleSuccess}
@@ -111,6 +111,11 @@ export default function Login() {
                     <Button className="w-100" type="submit">
                         Masuk
                     </Button>
+                    <Link to="/">
+                        <Button className="w-100 mt-3" variant='danger'>
+                            kembali
+                        </Button>
+                    </Link>
                 </Form>
             </Container>
         </div>

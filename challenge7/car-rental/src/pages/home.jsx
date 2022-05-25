@@ -1,6 +1,10 @@
 import { Accordion, Button, Nav, Navbar } from 'react-bootstrap'
 import React from 'react'
 import { Link } from 'react-router-dom';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { BsFillStarFill } from 'react-icons/bs'
 
 export default function Home() {
     return (
@@ -143,83 +147,89 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="owl-carousel owl-theme">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="card item">
-                            <div className="card-body">
-                                <div className="card-left">
-                                    <img alt="" src="/images-landingpage/img_photo.png" />
-                                </div>
-                                <div className="card-right">
-                                    <div className="faq-icon icon-pos faq">
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
+            <OwlCarousel items={2} className='owl-theme' loop center margin={10} nav>
+                <div className='item'>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="card item">
+                                <div className="card-body">
+                                    <div className="card-left">
+                                        <img alt="" src="/images-landingpage/img_photo.png" />
                                     </div>
-                                    <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
-                                        sit amet,
-                                        consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod”</p>
-                                    <p className="fw-bold">John Dee 32, Bromo</p>
+                                    <div className="card-right">
+                                        <div className="icon-pos faq d-flex" style={{ color: 'yellow' }}>
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                        </div>
+                                        <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
+                                            sit amet,
+                                            consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                            do eiusmod”</p>
+                                        <p className="fw-bold">John Dee 32, Bromo</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="card item">
-                            <div className="card-body">
-                                <div className="card-left">
-                                    <img alt="" src="/images-landingpage/img_photo_(1).png" />
-                                </div>
-                                <div className="card-right">
-                                    <div className="icon-pos faq">
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
+                <div className='item'>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="card item">
+                                <div className="card-body">
+                                    <div className="card-left">
+                                        <img alt="" src="/images-landingpage/img_photo_(1).png" />
                                     </div>
-                                    <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
-                                        sit amet,
-                                        consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod”</p>
-                                    <p className="fw-bold">John Dee 32, Bromo</p>
+                                    <div className="card-right">
+                                        <div className="icon-pos faq d-flex" style={{ color: 'yellow' }}>
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                        </div>
+                                        <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
+                                            sit amet,
+                                            consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                            do eiusmod”</p>
+                                        <p className="fw-bold">John Dee 32, Bromo</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="card item">
-                            <div className="card-body">
-                                <div className="card-left">
-                                    <img alt="" src="/images-landingpage/img_photo_(2).png" />
-                                </div>
-                                <div className="card-right">
-                                    <div className=" icon-pos faq">
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
-                                        <img src="/images-landingpage/Star1.png" alt="" />
+                <div className='item'>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="card item">
+                                <div className="card-body">
+                                    <div className="card-left">
+                                        <img alt="" src="/images-landingpage/img_photo_(2).png" />
                                     </div>
-                                    <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
-                                        sit amet,
-                                        consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod”</p>
-                                    <p className="fw-bold">John Dee 32, Bromo</p>
+                                    <div className="card-right">
+                                        <div className="icon-pos faq d-flex" style={{ color: 'yellow' }}>
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                            <BsFillStarFill />
+                                        </div>
+                                        <p className="icon-pos">“Lorem ipsum dolor sit amet, consectetur furete elit, sed do eiusmod lorem ipsum dolor
+                                            sit amet,
+                                            consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                            do eiusmod”</p>
+                                        <p className="fw-bold">John Dee 32, Bromo</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </OwlCarousel>;
 
             {/* sewa mobil */}
             <div className="container grid-service">

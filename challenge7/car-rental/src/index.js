@@ -8,6 +8,8 @@ import './index.css';
 import Login from './pages/login';
 import FilterCar from './pages/filterCar';
 import Register from './pages/register';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 const root = document.getElementById("root");
 render(

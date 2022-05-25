@@ -43,6 +43,16 @@ export default function FilterCar() {
         setIsLoggedIn(false);
         setUser({});
     };
+
+    // const filtered = async () => {
+    //     try {
+    //         const dataCars = await axios.get('http://localhost:8087/cars/filtered?')
+
+    //         const 
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
     return isLoggedIn ? (
         <div>
             {/* navbar */}
@@ -114,10 +124,10 @@ export default function FilterCar() {
                                         </div>
                                     </div>
                                     <div className="col-md-12 col-lg-3 col-sm-12">
-                                        Waktu Jemput/Ambil
+                                        Jumlah Penumpang (Optional)
                                         <div className="mb-3">
                                             <select id="inputPassangers" className="form-select">
-                                                <option hidden>Pilih Tipe Driver</option>
+                                                <option hidden>Jumlah Penumpang</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -132,7 +142,6 @@ export default function FilterCar() {
                             <div className="col-md-12 col-lg-1 col-sm-3 pos-form">
                                 <button type="submit" className="btn bg-btn btn-sewa" id="load-btn">Cari Mobil</button>
                             </div>
-                            <button id="clear-btn" className="bg-btn size-card">Clear</button>
                         </div>
                     </div>
                 </div>
