@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Button, Nav, Navbar } from 'react-bootstrap'
+import React, { useEffect, useRef, useState } from 'react'
+import { Button, Form, Nav, Navbar } from 'react-bootstrap'
 import { Navigate } from 'react-router-dom';
 
 export default function FilterCar() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [user, setUser] = useState({});
+    const [cars, setCars] = useState([])
+    const capacityField = useRef();
+    const isWithDriverField = useRef();
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -44,15 +48,19 @@ export default function FilterCar() {
         setUser({});
     };
 
-    // const filtered = async () => {
-    //     try {
-    //         const dataCars = await axios.get('http://localhost:8087/cars/filtered?')
+    const filtered = async (e) => {
+        e.preventDefault();
+        try {
 
-    //         const 
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
+            const dataCars = await axios.get(`http://localhost:8087/cars/filtered?isWithDriver=${isWithDriverField.current.value}&capacity=${capacityField.current.value}`)
+
+            const payloadData = await dataCars.data.data.filteredCars;
+            console.log(dataCars);
+            setCars(payloadData);
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return isLoggedIn ? (
         <div>
             {/* navbar */}
@@ -90,61 +98,87 @@ export default function FilterCar() {
             <div className="container position-sewa">
                 <div className="card border-sewa">
                     <div className="card-body shadow border-sewa">
-                        <div className="row">
-                            <div className="col-11">
-                                <div className="row">
-                                    <div className="col-md-12 col-lg-3 col-sm-12">
-                                        Tipe Driver
-                                        <div className="mb-3">
-                                            <select id="inputDriverAvailability" className="form-select">
-                                                <option hidden>Pilih Tipe Driver</option>
-                                                <option value="true">Dengan Sopir</option>
-                                                <option value="false">Tanpa Sopir</option>
-                                            </select>
+                        <Form onSubmit={(e) => filtered(e)}>
+                            <div className="row">
+                                <div className="col-11">
+                                    <div className="row">
+                                        <div className="col-md-12 col-lg-3 col-sm-12">
+                                            Tipe Driver
+                                            <div className="mb-3">
+                                                <select ref={isWithDriverField} className="form-select">
+                                                    <option hidden>Pilih Tipe Driver</option>
+                                                    <option value="true">Dengan Sopir</option>
+                                                    <option value="false">Tanpa Sopir</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-12 col-lg-3 col-sm-12">
-                                        Tanggal
-                                        <div className="mb-3">
-                                            <input type="date" className="form-control" id="inputDate"
-                                                placeholder="pilih tanggal booking" />
+                                        <div className="col-md-12 col-lg-3 col-sm-12">
+                                            Tanggal
+                                            <div className="mb-3">
+                                                <input type="date" className="form-control" id="inputDate"
+                                                    placeholder="pilih tanggal booking" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-12 col-lg-3 col-sm-12">
-                                        Waktu Jemput/Ambil
-                                        <div className="mb-3">
-                                            <select id="inputTime" className="form-select">
-                                                <option hidden>Pilih Tipe Driver</option>
-                                                <option value="08:00">08:00 WIB</option>
-                                                <option value="09:00">09:00 WIB</option>
-                                                <option value="10:00">10:00 WIB</option>
-                                                <option value="11:00">11:00 WIB</option>
-                                                <option value="12:00">12:00 WIB</option>
-                                            </select>
+                                        <div className="col-md-12 col-lg-3 col-sm-12">
+                                            Waktu Jemput/Ambil
+                                            <div className="mb-3">
+                                                <select id="inputTime" className="form-select">
+                                                    <option hidden>Pilih Tipe Driver</option>
+                                                    <option value="08:00">08:00 WIB</option>
+                                                    <option value="09:00">09:00 WIB</option>
+                                                    <option value="10:00">10:00 WIB</option>
+                                                    <option value="11:00">11:00 WIB</option>
+                                                    <option value="12:00">12:00 WIB</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-12 col-lg-3 col-sm-12">
-                                        Jumlah Penumpang (Optional)
-                                        <div className="mb-3">
-                                            <select id="inputPassangers" className="form-select">
-                                                <option hidden>Jumlah Penumpang</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                            </select>
+                                        <div className="col-md-12 col-lg-3 col-sm-12">
+                                            Jumlah Penumpang (Optional)
+                                            <div className="mb-3">
+                                                <select ref={capacityField} className="form-select">
+                                                    <option hidden>Jumlah Penumpang</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div className="col-md-12 col-lg-1 col-sm-3 pos-form">
+                                    <button type="submit" className="btn bg-btn btn-sewa" id="load-btn">Cari Mobil</button>
+                                </div>
                             </div>
-                            <div className="col-md-12 col-lg-1 col-sm-3 pos-form">
-                                <button type="submit" className="btn bg-btn btn-sewa" id="load-btn">Cari Mobil</button>
-                            </div>
-                        </div>
+                        </Form>
                     </div>
                 </div>
+            </div>
+
+            {/* card cars */}
+            <div>
+                {cars.map((car) => (
+                    <div className="card " style={{ marginTop: '2rem' }} key={car.id} >
+                        <img src={car.image} className="card-img-top" alt="" style={{ height: '250px' }} />
+                        <div className="card-body">
+                            <p>{car.model} / {car.manufacture}</p>
+                            <h5 className="card-title bold">Rp {car.rentPerDay} / hari</h5>
+                            <p className="card-text">{car.description}</p>
+                            <div className="">
+                                <img src="images-landingpage/fi_users.png" alt="" className="me-2 " />{car.capacity} Orang
+                            </div>
+                            <div className="pt-2">
+                                <img src="images-landingpage/fi_settings.png" alt="" className="me-2 " />{car.transmission}
+                            </div>
+                            <div className="pt-2">
+                                <img src="images-landingpage/fi_calendar.png" alt="" className="me-2 " />Tahun {car.year}
+                            </div>
+                            <button className="btn bg-btn bold mt-3 w-100">Pilih Mobil</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
 
