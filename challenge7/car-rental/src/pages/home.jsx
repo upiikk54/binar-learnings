@@ -1,16 +1,16 @@
-import { Accordion, Button, Nav, Navbar } from 'react-bootstrap'
-import React from 'react'
+import { Accordion, Button, Card, Nav, Navbar } from 'react-bootstrap'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { BsFillStarFill } from 'react-icons/bs'
-// import { selectUser } from '../slices/userSlice';
-// import { useSelector } from 'react-redux';
+import { selectUser } from '../slices/userSlice';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
-    // const userRedux = useSelector(selectUser);
-    // const [user, setUser] = useState(userRedux.creds);
+    const userRedux = useSelector(selectUser);
+    const [user, setUser] = useState(userRedux.creds);
     return (
         <div>
             {/* navbar */}
@@ -18,7 +18,7 @@ export default function Home() {
                 <div className="container">
                     <Navbar.Brand href='#' className='brand' />
                     <div className="offcanvas-body" id="offcanvasRight">
-                        {/* <Card border='primary' className='h-50 mt-2'>hello kak! {user.name}</Card> */}
+                        <Card border='primary' className='h-50 mt-2'>hello kak!{user.name}</Card>
                         <div className="navbar-nav ms-auto">
                             <Nav.Link className='text-dark pe-3'>Our Services</Nav.Link>
                             <Nav.Link className='text-dark pe-3'>Why Us</Nav.Link>

@@ -3,12 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button, Card, Col, Container, Form, Nav, Navbar, Row } from 'react-bootstrap'
 import { BsCalendar3, BsGearFill, BsPeopleFill } from 'react-icons/bs';
 import { Navigate } from 'react-router-dom';
-// import { addUser } from '../slices/userSlice';
-// import { useDispatch } from "react-redux";
+import { addUser } from '../slices/userSlice';
+import { useDispatch } from "react-redux";
 
 
 export default function FilterCar() {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [user, setUser] = useState({});
     const [cars, setCars] = useState([])
@@ -39,12 +39,12 @@ export default function FilterCar() {
                 const currentUserResponse = currentUserRequest.data;
 
                 if (currentUserResponse.status) {
-                    // dispatch(
-                    //     addUser({
-                    //         user: currentUserResponse.data.user,
-                    //         token: token,
-                    //     })
-                    // )
+                    dispatch(
+                        addUser({
+                            user: currentUserResponse.data.user,
+                            token: token,
+                        })
+                    )
                     setUser(currentUserResponse.data.user);
                 }
             } catch (err) {
