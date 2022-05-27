@@ -18,7 +18,7 @@ export default function Home() {
                 <div className="container">
                     <Navbar.Brand href='#' className='brand' />
                     <div className="offcanvas-body" id="offcanvasRight">
-                        <Card border='primary' className='h-50 mt-2'>hello kak!{user.name}</Card>
+                        <Card border='primary' className='h-50 mt-2'>hello kak! {user.name}</Card>
                         <div className="navbar-nav ms-auto">
                             <Nav.Link className='text-dark pe-3'>Our Services</Nav.Link>
                             <Nav.Link className='text-dark pe-3'>Why Us</Nav.Link>
