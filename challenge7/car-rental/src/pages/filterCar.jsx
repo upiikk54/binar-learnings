@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
-import { Button, Form, Nav, Navbar } from 'react-bootstrap'
+import { Button, Card, Col, Container, Form, Nav, Navbar, Row } from 'react-bootstrap'
+import { BsCalendar3, BsGearFill, BsPeopleFill } from 'react-icons/bs';
 import { Navigate } from 'react-router-dom';
 
 export default function FilterCar() {
@@ -9,6 +10,7 @@ export default function FilterCar() {
     const [cars, setCars] = useState([])
     const capacityField = useRef();
     const isWithDriverField = useRef();
+    const availableAtField = useRef();
 
     useEffect(() => {
 
@@ -52,7 +54,7 @@ export default function FilterCar() {
         e.preventDefault();
         try {
 
-            const dataCars = await axios.get(`http://localhost:8087/cars/filtered?isWithDriver=${isWithDriverField.current.value}&capacity=${capacityField.current.value}`)
+            const dataCars = await axios.get(`http://localhost:8087/cars/filtered?isWithDriver=${isWithDriverField.current.value}&capacity=${capacityField.current.value}&availableAt=${availableAtField.current.value}`)
 
             const payloadData = await dataCars.data.data.filteredCars;
             console.log(dataCars);
@@ -68,12 +70,12 @@ export default function FilterCar() {
                 <div className="container">
                     <Navbar.Brand href='/' className='brand' />
                     <div className="offcanvas-body" id="offcanvasRight">
+                        <Card border='primary' className='h-50 mt-2'>hello kak! {user.name}</Card>
                         <div className="navbar-nav ms-auto">
                             <Nav.Link className='text-dark pe-3'>Our Services</Nav.Link>
                             <Nav.Link className='text-dark pe-3'>Why Us</Nav.Link>
                             <Nav.Link className='text-dark pe-3'>Testimonial</Nav.Link>
                             <Nav.Link className='text-dark pe-3'>FAQ</Nav.Link>
-                            <Nav.Link className='text-dark ps-4'>hello kak! {user.name}</Nav.Link>
                             <Button variant="danger" type="button" className="btn" onClick={(e) => logout(e)}>Logout</Button>
                         </div>
                     </div>
@@ -115,7 +117,7 @@ export default function FilterCar() {
                                         <div className="col-md-12 col-lg-3 col-sm-12">
                                             Tanggal
                                             <div className="mb-3">
-                                                <input type="date" className="form-control" id="inputDate"
+                                                <input type="date" className="form-control" ref={availableAtField}
                                                     placeholder="pilih tanggal booking" />
                                             </div>
                                         </div>
@@ -123,7 +125,7 @@ export default function FilterCar() {
                                             Waktu Jemput/Ambil
                                             <div className="mb-3">
                                                 <select id="inputTime" className="form-select">
-                                                    <option hidden>Pilih Tipe Driver</option>
+                                                    <option hidden>Pilih Waktu</option>
                                                     <option value="08:00">08:00 WIB</option>
                                                     <option value="09:00">09:00 WIB</option>
                                                     <option value="10:00">10:00 WIB</option>
@@ -158,28 +160,41 @@ export default function FilterCar() {
             </div>
 
             {/* card cars */}
-            <div>
-                {cars.map((car) => (
-                    <div className="card " style={{ marginTop: '2rem' }} key={car.id} >
-                        <img src={car.image} className="card-img-top" alt="" style={{ height: '250px' }} />
-                        <div className="card-body">
-                            <p>{car.model} / {car.manufacture}</p>
-                            <h5 className="card-title bold">Rp {car.rentPerDay} / hari</h5>
-                            <p className="card-text">{car.description}</p>
-                            <div className="">
-                                <img src="images-landingpage/fi_users.png" alt="" className="me-2 " />{car.capacity} Orang
-                            </div>
-                            <div className="pt-2">
-                                <img src="images-landingpage/fi_settings.png" alt="" className="me-2 " />{car.transmission}
-                            </div>
-                            <div className="pt-2">
-                                <img src="images-landingpage/fi_calendar.png" alt="" className="me-2 " />Tahun {car.year}
-                            </div>
-                            <button className="btn bg-btn bold mt-3 w-100">Pilih Mobil</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <Container>
+                <Row>
+                    {cars.map((car) => (
+                        <Col md={4}>
+                            <Card style={{ marginTop: "2rem" }} key={car.id}>
+                                <img src={car.image} alt="" style={{ height: "250px" }} />
+                                <div className="card-body">
+                                    <p>
+                                        {car.model} / {car.manufacture}
+                                    </p>
+                                    <h5 className="card-title bold">
+                                        Rp {car.rentPerDay} / hari
+                                    </h5>
+                                    <p className="card-text">{car.description}</p>
+                                    <div className="">
+                                        <BsPeopleFill className="me-2" />
+                                        {car.capacity} Orang
+                                    </div>
+                                    <div className="pt-2">
+                                        <BsGearFill className="me-2" />
+                                        {car.transmission}
+                                    </div>
+                                    <div className="pt-2">
+                                        <BsCalendar3 className="me-2" />
+                                        Tahun {car.year}
+                                    </div>
+                                    <Button variant="success" className=" w-100 mt-3">
+                                        Pilih Mobil
+                                    </Button>
+                                </div>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
 
 
             {/* footer */}
