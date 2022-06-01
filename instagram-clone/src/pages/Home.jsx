@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import { Button, Navbar, Container, Offcanvas, Card, Row, Col, Modal } from "react-bootstrap";
+import { Button, Navbar, Container, Offcanvas, Card, Row, Col, Modal, Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { addUser } from "../slices/userSlice";
@@ -13,16 +13,15 @@ function Home() {
   const [post, setPost] = useState([]);
   const [postToDelete, setPostToDelete] = useState();
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showSideBar, setShowSideBar] = useState(false);
+  const handleCloseSideBar = () => setShowSideBar(false);
+  const handleShowSideBar = () => setShowSideBar(true);
 
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => {
     setPostToDelete(null);
     setShowModal(false)
   };
-
   const handleShowModal = (e, post) => {
     console.log("ini log");
     e.preventDefault();
@@ -30,16 +29,22 @@ function Home() {
     setShowModal(true)
   };
 
+  const [successResponse, setSuccessResponse] = useState({
+    isSuccess: false,
+    message: "",
+  });
+
+  const [errorResponse, setErrorResponse] = useState({
+    isError: false,
+    message: "",
+  });
 
   useEffect(() => {
-
+    // Function validasi user
     const validateLogin = async () => {
       try {
-        // Check status user login
-        // 1. Get token from localStorage
         const token = localStorage.getItem("token");
 
-        // 2. Check token validity from API
         const currentUserRequest = await axios.get(
           "http://localhost:8087/auth/me",
           {
@@ -70,6 +75,7 @@ function Home() {
     setIsRefresh(false);
   }, [isRefresh]);
 
+  // function logout
   const logout = () => {
     localStorage.removeItem("token");
 
@@ -77,6 +83,7 @@ function Home() {
     setUser({});
   };
 
+  // function getAll postingan
   const posts = async () => {
     try {
       const dataPosts = await axios.get(
@@ -91,6 +98,7 @@ function Home() {
     }
   }
 
+  // function Delete Postingan
   const onDelete = async (e) => {
     e.preventDefault();
     try {
@@ -104,21 +112,44 @@ function Home() {
           },
         }
       );
+
+      const successResponse = createRequest.data.message;
+
+      setSuccessResponse({
+        isSuccess: true,
+        message: successResponse,
+      })
+
+
+      console.log(createRequest);
       setPostToDelete(null);
       setShowModal(false);
 
       setIsRefresh(true);
     } catch (err) {
       console.log(err);
+
+      const response = err.response.data;
+
+      setErrorResponse({
+        isError: true,
+        message: response.message,
+      });
     }
   }
 
-
-
-
-
   return isLoggedIn ? (
     <div className="p-3 bg-all">
+      {/* response success or error */}
+      {successResponse.isSuccess && (
+        <Alert variant="success" onClose={() => setSuccessResponse(true)} dismissible>{successResponse.message}</Alert>
+      )}
+
+      {errorResponse.isError && (
+        <Alert variant="danger" onClose={() => setErrorResponse(true)} dismissible>{errorResponse.message}</Alert>
+      )}
+      
+      {/* navbar */}
       <Navbar>
         <Container>
           <p className="bg-nav fw-bold">Welcome  {user.name}!</p>
@@ -128,7 +159,7 @@ function Home() {
             <Button className="my-3" variant="danger" onClick={(e) => logout(e)}>
               Logout
             </Button>
-            <Button className="ms-3" variant="primary" onClick={handleShow}>
+            <Button className="ms-3" variant="primary" onClick={handleShowSideBar}>
               other
             </Button>
           </Navbar.Collapse>
@@ -136,7 +167,7 @@ function Home() {
       </Navbar>
 
       {/* sidebar */}
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={showSideBar} onHide={handleCloseSideBar}>
         <Offcanvas.Header className="bg-all" closeButton>
           <Offcanvas.Title className="bg-nav fw-bold">Instagram-clone</Offcanvas.Title>
         </Offcanvas.Header>
@@ -152,6 +183,7 @@ function Home() {
         </Offcanvas.Body>
       </Offcanvas>
 
+      {/* card */}
       <Container className="mt-5">
         <Row>
           {post.map((post) => (
@@ -164,9 +196,6 @@ function Home() {
                   <Link className="" to={`/update/${post.id}`}>
                     <Button variant="warning">Edit</Button>
                   </Link>
-                  {/* <Link className="ms-3" to={`/delete/${post.id}`} onClick={(e) => onDelete(e, post)}>
-                    <Button variant="danger">Delete</Button>
-                  </Link> */}
                   <Button variant="danger" className="ms-3" onClick={(e) => handleShowModal(e, post)}>
                     Delete
                   </Button>
@@ -177,6 +206,7 @@ function Home() {
         </Row>
       </Container>
 
+      {/* modals */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>apakah ingin menghapus?</Modal.Title>
@@ -193,6 +223,7 @@ function Home() {
         </Modal.Footer>
       </Modal>
 
+      {/* footer */}
       <Container className="mt-5">
         <Row className="text-center">
           <p className="bg-nav fw-bold">Alamat: Jalan menuju hati mu, aishh</p>
