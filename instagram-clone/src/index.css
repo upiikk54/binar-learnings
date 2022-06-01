@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.image-post{
+  width: 350px;
+  height: 200px;
+}
+
+.bg-nav{
+  color: #ffffff;
+}
+
+.bg-all{
+  background-image: url(mob-shutterstock-481251031-20210610135721_1920x1080.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .bg-all{
+  background-color: #eae1f0;
+} */

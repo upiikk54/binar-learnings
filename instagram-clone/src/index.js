@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreatePosts from "./pages/CreatePosts";
 import UpdatePosts from "./pages/UpdatePosts";
-import DeletePosts from "./pages/DeletePosts";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 
@@ -24,7 +23,6 @@ render(
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<CreatePosts />} />
         <Route path="/update/:id" element={<UpdatePosts />} />
-        <Route path="/delete/:id" element={<DeletePosts />} />
       </Routes>
     </Router>
   </Provider>,

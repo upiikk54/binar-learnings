@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Form, Container, Button, Alert } from "react-bootstrap";
+import { Form, Container, Button, Alert, Row } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function UpdatePosts() {
     const navigate = useNavigate();
@@ -11,6 +11,7 @@ export default function UpdatePosts() {
 
     const titleField = useRef("");
     const descriptionField = useRef("");
+    const [picturePost, setPicturePostField] = useState();
 
     const [errorResponse, setErrorResponse] = useState({
         isError: false,
@@ -22,15 +23,16 @@ export default function UpdatePosts() {
 
         try {
             const token = localStorage.getItem("token");
-            const userToUpdatePayload = {
-                title: titleField.current.value,
-                description: descriptionField.current.value,
-            };
+            const userToUpdatePayload = new FormData();
+            userToUpdatePayload.append("title", titleField.current.value);
+            userToUpdatePayload.append("description", descriptionField.current.value);
+            userToUpdatePayload.append("picture", picturePost);
 
             const updateRequest = await axios.put(
                 `http://localhost:8087/posts/${id}`, userToUpdatePayload, {
                 headers: {
                     Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
                 },
             }
             );
@@ -88,12 +90,27 @@ export default function UpdatePosts() {
                         defaultValue={data.description}
                     />
                 </Form.Group>
+                <Form.Group className="mb-3">
+                    <Row>
+                        <img src={`http://localhost:8087/public/files/${data.picture}`} alt="" style={{ height: "250px", width:"250px" }} />
+                        <Form.Label className="mt-3">Picture</Form.Label>
+                    </Row>
+                    <Form.Control
+                        type="file"
+                        onChange={(e) => setPicturePostField(e.target.files[0])}
+                    />
+                </Form.Group>
                 {errorResponse.isError && (
                     <Alert variant="danger">{errorResponse.message}</Alert>
                 )}
                 <Button className="w-100" type="submit">
                     Kirim
                 </Button>
+                <Link to="/">
+                    <Button className="w-100 mt-3" variant='danger'>
+                        kembali
+                    </Button>
+                </Link>
             </Form>
         </Container>
     )
