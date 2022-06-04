@@ -32,13 +32,15 @@ class UsersRepository {
         name,
         email,
         password,
-        role
+        role,
+        picture,
     }) {
         const createdUser = users.create({
             name,
             email,
             password,
             role,
+            picture,
         });
 
         return createdUser;

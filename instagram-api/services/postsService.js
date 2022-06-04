@@ -4,13 +4,25 @@ class postsService {
     static async create({
         user_id,
         title,
-        description
+        description,
+        picture,
     }) {
         if (!title) {
             return {
                 status: false,
                 status_code: 400,
                 message: "title wajib diisi",
+                data: {
+                    registered_user: null,
+                },
+            };
+        }
+
+        if (!picture) {
+            return {
+                status: false,
+                status_code: 400,
+                message: "picture wajib diisi",
                 data: {
                     registered_user: null,
                 },
@@ -30,7 +42,8 @@ class postsService {
         const createdPosts = await postsRepository.create({
             user_id,
             title,
-            description
+            description,
+            picture,
         });
 
         return {
@@ -109,7 +122,8 @@ class postsService {
             id,
             user_id,
             title,
-            description
+            description,
+            picture,
         }) {
             const getPost = await postsRepository.getById({
                 id
@@ -120,6 +134,7 @@ class postsService {
                     id,
                     title,
                     description,
+                    picture,
                 });
 
                 return {

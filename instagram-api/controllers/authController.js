@@ -18,6 +18,7 @@ const register = async (req, res) => {
         email,
         password,
         role,
+        picture: req.uploaded_picture,
     });
 
     res.status(status_code).send({
@@ -62,8 +63,30 @@ const login = async (req, res) => {
     });
 };
 
+const loginGoogle = async (req, res) => {
+    const {
+        google_credential,
+    } = req.body;
+
+    const {
+        status,
+        status_code,
+        message,
+        data
+    } = await authService.loginGoogle({
+        google_credential,
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+};
+
 module.exports = {
     register,
     login,
-    currentUser
+    currentUser,
+    loginGoogle
 };

@@ -3,7 +3,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const {
     JWT
-} = require("../lib/const")
+} = require("../lib/const");
+const { default: axios } = require("axios");
+const { OAuth2Client } = require("google-auth-library");
 const SALT_ROUND = 10;
 
 class AuthService {
@@ -11,7 +13,8 @@ class AuthService {
         name,
         email,
         password,
-        role
+        role,
+        picture
     }) {
         // Payload Validation
         if (!name) {
@@ -19,6 +22,17 @@ class AuthService {
                 status: false,
                 status_code: 400,
                 message: "Nama wajib diisi",
+                data: {
+                    registered_user: null,
+                },
+            };
+        }
+
+        if (!picture) {
+            return {
+                status: false,
+                status_code: 400,
+                message: "Gambar wajib diisi",
                 data: {
                     registered_user: null,
                 },
@@ -87,6 +101,7 @@ class AuthService {
                 email,
                 password: hashedPassword,
                 role,
+                picture,
             });
 
             return {
@@ -180,6 +195,65 @@ class AuthService {
                     },
                 };
             }
+        }
+    }
+
+    static async loginGoogle({
+        google_credential: googleCredential
+    }) {
+        try {
+            const client = new OAuth2Client("155043602177-a6mj7v3iv3ptrkfq8c0cioebm157sufu.apps.googleusercontent.com");
+
+            // Get google user credential
+            const userInfo = await client.verifyIdToken({
+                idToken: googleCredential,
+                audience: "155043602177-a6mj7v3iv3ptrkfq8c0cioebm157sufu.apps.googleusercontent.com",
+            });
+
+            const {
+                email,
+                name
+            } = userInfo.payload;
+
+            const getUserByEmail = await usersRepository.getByEmail({
+                email
+            });
+
+            if (!getUserByEmail) {
+                await usersRepository.create({
+                    name,
+                    email,
+                    role: "user",
+                });
+            }
+
+            const token = jwt.sign({
+                    id: getUserByEmail.id,
+                    email: getUserByEmail.email,
+                },
+                JWT.SECRET, {
+                    expiresIn: JWT.EXPIRED,
+                }
+            );
+
+            return {
+                status: true,
+                status_code: 200,
+                message: "User berhasil login",
+                data: {
+                    token,
+                },
+            };
+        } catch (err) {
+            console.log(err);
+            return {
+                status: false,
+                status_code: 500,
+                message: err.message,
+                data: {
+                    registered_user: null,
+                },
+            };
         }
     }
 }

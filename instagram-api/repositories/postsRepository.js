@@ -6,12 +6,14 @@ class postsRepository {
     static async create({
         user_id,
         title,
-        description
+        description,
+        picture,
     }) {
         const createdUser = posts.create({
             user_id,
             title,
-            description
+            description,
+            picture,
         });
 
         return createdUser;
@@ -50,11 +52,13 @@ class postsRepository {
     static async updateById({
         id,
         title,
-        description
+        description,
+        picture,
     }) {
         const updateById = await posts.update({
             title,
             description,
+            picture,
         }, {
             where: {
                 id
