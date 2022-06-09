@@ -62,10 +62,38 @@ describe("handleNotFound", () => {
         expect(mockResponse.status_code).toEqual(404);
         expect(mockResponse.status().json()).toEqual({
             error: {
-                name: err.name, 
+                name: err.name,
                 message: err.message,
                 details: err.details,
             }
+        });
+    });
+});
+
+describe("#handleNotFound", () => {
+    it("should call res.status(404) and res.json error", async () => {
+        const mockRequest = {
+            method: jest.fn().mockReturnThis(),
+            url: jest.fn().mockReturnThis(),
+        };
+
+        const err = new NotFoundError(mockRequest.method, mockRequest.url);
+
+        const mockResponse = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis(),
+        };
+
+        const applicationController = new ApplicationController();
+        applicationController.handleNotFound(mockRequest, mockResponse);
+
+        expect(mockResponse.status).toHaveBeenCalledWith(404);
+        expect(mockResponse.json).toHaveBeenCalledWith({
+            error: {
+                name: err.name,
+                message: err.message,
+                details: err.details,
+            },
         });
     });
 });
