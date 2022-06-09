@@ -9,147 +9,143 @@ const {
 } = require("../../models")
 
 
-describe("#AuthenticationController", () => {
-    describe("#createTokenFromUser", () => {
-        it("it should create new token", async () => {
-            const user = {
-                id: 1,
-                name: "luthfi",
-                email: "luthfi@gmail.com",
-                image: "luthfi.jpg",
+
+describe("#createTokenFromUser", () => {
+    it("it should create new token", async () => {
+        const mockUser = {
+            id: 1,
+            name: "luthfi",
+            email: "luthfi@gmail.com",
+            image: "luthfi.jpg",
+        };
+
+        const mockRole = {
+            id: 1,
+            name: "ADMIN"
+        };
+
+        const token = jsonwebtoken.sign({
+            id: mockUser.id,
+            name: mockUser.name,
+            email: mockUser.email,
+            image: mockUser.image,
+            role: {
+                id: mockRole.id,
+                name: mockRole.name
             }
+        }, JWT_SIGNATURE_KEY)
 
-            const role = {
-                id: 1,
-                name: "ADMIN"
-            }
-
-            const mockUser = user;
-            const mockRole = role;
-
-            const token = jsonwebtoken.sign({
-                id: mockUser.id,
-                name: mockUser.name,
-                email: mockUser.email,
-                image: mockUser.image,
-                role: {
-                    id: mockRole.id,
-                    name: mockRole.name
-                }
-            }, JWT_SIGNATURE_KEY)
-
-            const app = new AuthenticationController({
-                jwt: jsonwebtoken
-            })
-            const result = await app.createTokenFromUser(mockUser, mockRole)
-            const hasil = jest.fn();
-            hasil.mockReturnValue(result)
-
-            expect(result).toEqual(token)
+        const app = new AuthenticationController({
+            jwt: jsonwebtoken
         })
-    });
+        const result = await app.createTokenFromUser(mockUser, mockRole)
+        const hasil = jest.fn();
+        hasil.mockReturnValue(result)
 
-    describe("#decodeToken", () => {
-        it("should decode token", async () => {
-            const user = {
-                id: 1,
-                name: "luthfi",
-                email: "luthfi@gmail.com",
-                image: "luthfi.jpg",
+        expect(result).toEqual(token)
+    })
+});
+
+describe("#decodeToken", () => {
+    it("should decode token", async () => {
+        const mockUser = {
+            id: 1,
+            name: "luthfi",
+            email: "luthfi@gmail.com",
+            image: "luthfi.jpg",
+        };
+
+        const mockRole = {
+            id: 1,
+            name: "ADMIN"
+        };
+
+        const token = jsonwebtoken.sign({
+            id: mockUser.id,
+            name: mockUser.name,
+            email: mockUser.email,
+            image: mockUser.image,
+            role: {
+                id: mockRole.id,
+                name: mockRole.name
             }
+        }, JWT_SIGNATURE_KEY)
 
-            const role = {
-                id: 1,
-                name: "ADMIN"
-            }
-
-            const mockUser = user;
-            const mockRole = role;
-
-            const token = jsonwebtoken.sign({
-                id: mockUser.id,
-                name: mockUser.name,
-                email: mockUser.email,
-                image: mockUser.image,
-                role: {
-                    id: mockRole.id,
-                    name: mockRole.name
-                }
-            }, JWT_SIGNATURE_KEY)
-
-            const decoded = jsonwebtoken.verify(token, JWT_SIGNATURE_KEY)
-            const app = new AuthenticationController({
-                jwt: jsonwebtoken
-            })
-            const result = await app.decodeToken(token)
-
-            expect(result).toEqual(decoded)
+        const decoded = jsonwebtoken.verify(token, JWT_SIGNATURE_KEY)
+        const app = new AuthenticationController({
+            jwt: jsonwebtoken
         })
-    });
+        const result = await app.decodeToken(token)
 
-    describe("#encryptPassword", () => {
-        it("should encrypt the password", async () => {
-            const password = "kelompok4NJAY";
-            const encrypt = bcrypt.hashSync(password, 10);
+        expect(result).toEqual(decoded)
+    })
+});
 
-            const app = new AuthenticationController({
-                jwt: jsonwebtoken,
-                bcrypt: bcrypt
-            })
-            const result = await app.encryptPassword(password);
+describe("#encryptPassword", () => {
+    it("should encrypt the password", async () => {
+        const password = "luthfi12345";
+        const encrypt = bcrypt.hashSync(password, 10);
 
-            expect(result.slice(0, -53)).toEqual(encrypt.slice(0, -53));
+        const app = new AuthenticationController({
+            jwt: jsonwebtoken,
+            bcrypt: bcrypt
         })
-    });
+        const result = await app.encryptPassword(password);
 
-    describe("#verifyPassword", () => {
-        it("should verify password and encrypted one", async () => {
-            const password = "luthfi12345";
+        expect(result.slice(0, -53)).toEqual(encrypt.slice(0, -53));
+    })
+});
 
-            const encrypt = bcrypt.hashSync(password, 0);
+describe("#verifyPassword", () => {
+    it("should verify password and encrypted one", async () => {
+        const password = "luthfi12345";
 
-            const verif = bcrypt.compareSync(password, encrypt)
+        const encrypt = bcrypt.hashSync(password, 10);
 
-            const app = new AuthenticationController({
-                jwt: jsonwebtoken,
-                bcrypt: bcrypt
-            })
-            const result = await app.verifyPassword(password, encrypt);
+        const verif = bcrypt.compareSync(password, encrypt)
 
-            expect(result).toEqual(verif)
+        const app = new AuthenticationController({
+            jwt: jsonwebtoken,
+            bcrypt: bcrypt
         })
-    });
+        const result = await app.verifyPassword(password, encrypt);
 
-    describe("#handleRegister", () => {
-        it("should register user", async () => {
-            const payloadUser = {
-                name:"luthfi",
-                email: "luthfi@gmail.com",
-                password:"luthfi12345"
-            }
+        expect(result).toEqual(verif)
+    })
+});
 
-            const mockRequest = {
-                body: {
-                    payloadUser
-                }
-            }
+describe("#handleRegister", () => {
+    it("should register user", async () => {
+        const payloadUser = {
+            name: "luthfi",
+            email: "luthfi@gmail.com",
+            password: "luthfi12345"
+        }
 
-            const mockResponse = {
-                status: jest.fn().mockReturnThis(),
-                json: jest.fn().mockReturnThis(),
-            }
-
-            const mockNext = {}
-
-            const mockUser = new User({
+        const mockRequest = {
+            body: {
                 payloadUser
-            })
-            const mockUserModel = {};
-            let existingUser = mockUserModel.findOne = jest.fn().mockReturnValue(mockUser)
-            const app = new AuthenticationController({
-                userModel: mockUserModel
-            })
-            const result = await app.handleRegister(mockRequest, mockResponse, mockNext);
+            }
+        }
+
+        const mockResponse = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis(),
+        }
+
+        const mockNext = {}
+
+        const mockUser = new User({
+            payloadUser
         })
+        const mockUserModel = {};
+
+        mockUserModel.findOne = jest.fn().mockReturnValue(mockUser)
+
+        const app = new AuthenticationController({
+            userModel: mockUserModel
+        })
+
+        await app.handleRegister(mockRequest, mockResponse, mockNext);
     })
 })
