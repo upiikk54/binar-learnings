@@ -1,48 +1,7 @@
-const CarController = require("../CarController");
 const {
     Car
-} = require("../../models")
-
-describe('handleGetCar', () => {
-    it('handleGetCar', async () => {
-
-        const payloadCar = {
-            name: "brio",
-            price: 50000,
-            size: "large",
-            image: "https://upload.wikimedia.org/wikipedia/commons/0/07/2020_Honda_Brio_Satya_E_1.2_DD1_%2820211006%29.jpg",
-            isCurrentlyRented: false,
-        };
-
-        const mockRequest = {
-            params: {
-                id: 1
-            }
-        };
-
-        const mockCar = new Car({
-            payloadCar
-        })
-        const mockCarModel = {}
-
-        mockCarModel.findByPk = jest.fn().mockReturnValue(mockCar)
-        
-        const app = new CarController({
-            carModel: mockCarModel
-        });
-
-        const mockResponse = {
-            status: jest.fn().mockReturnThis(),
-            json: jest.fn().mockReturnThis()
-        };
-
-        await app.handleGetCar(mockRequest, mockResponse);
-        const app1 = await app.getCarFromRequest(mockRequest);
-
-        expect(mockResponse.status).toHaveBeenCalledWith(200);
-        expect(mockResponse.json).toHaveBeenCalledWith(app1)
-    });
-});
+} = require("../../models");
+const CarController = require("../CarController");
 
 describe('handleCreateCar', () => {
     it('success resultr', async () => {
@@ -128,6 +87,152 @@ describe('handleCreateCar', () => {
                 message: err.message,
             }
         });
+    });
+});
+
+describe('handleGetCar', () => {
+    it('handleGetCar', async () => {
+
+        const payloadCar = {
+            name: "brio",
+            price: 50000,
+            size: "large",
+            image: "https://upload.wikimedia.org/wikipedia/commons/0/07/2020_Honda_Brio_Satya_E_1.2_DD1_%2820211006%29.jpg",
+            isCurrentlyRented: false,
+        };
+
+        const mockRequest = {
+            params: {
+                id: 1
+            }
+        };
+
+        const mockCar = new Car({
+            payloadCar
+        })
+        const mockCarModel = {}
+
+        mockCarModel.findByPk = jest.fn().mockReturnValue(mockCar)
+
+        const app = new CarController({
+            carModel: mockCarModel
+        });
+
+        const mockResponse = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis()
+        };
+
+        await app.handleGetCar(mockRequest, mockResponse);
+        const app1 = await app.getCarFromRequest(mockRequest);
+
+        expect(mockResponse.status).toHaveBeenCalledWith(200);
+        expect(mockResponse.json).toHaveBeenCalledWith(app1)
+    });
+});
+
+describe('handleUpdateCar', () => {
+    // it('handleUpdateCar', async () => {
+    //     const err = new Error("not Found!");
+
+    //     const name = "brio"
+    //     const price = 50000
+    //     const size = "large"
+    //     const image = "https://upload.wikimedia.org/wikipedia/commons/0/07/2020_Honda_Brio_Satya_E_1.2_DD1_%2820211006%29.jpg"
+
+    //     const error = {
+    //         error: {
+    //             name: err.name,
+    //             message: err.message,
+    //         }
+    //     }
+
+
+    //     const mockRequest = {
+    //         params: {
+    //             id: 1,
+    //         },
+    //         body: {
+    //             name,
+    //             price,
+    //             size,
+    //             image,
+    //         }
+    //     };
+
+    //     const mockCarModel = {};
+    //     const mockResponse = {
+    //         status: jest.fn().mockReturnThis(),
+    //         json: jest.fn().mockReturnThis()
+    //     }
+
+    //     const app = new CarController({
+    //         carModel: mockCarModel
+    //     })
+
+    //     // const Car = mockCarModel.findByPk = jest.fn().mockReturnValue(mockRequest.body);
+
+    //     const car = await app.getCarFromRequest(mockRequest);
+
+    //     await car.update({
+    //         name: mockRequest.body.name,
+    //         price: mockRequest.body.price,
+    //         size: mockRequest.body.size,
+    //         image: mockRequest.body.image,
+    //         isCurrentlyRented: false
+    //     })
+
+    //     await app.handleUpdateCar(mockRequest, mockResponse);
+
+    //     expect(mockResponse.status).toHaveBeenCalledWith(422);
+    //     expect(mockResponse.json).toHaveBeenCalledWith(error);
+    // });
+
+    it('update car', async () => {
+        const payloadUpdate = {
+            name: "mobilio",
+            price: 12000,
+            size: "large",
+            image: "https://upload.wikimedia.org/wikipedia/commons/0/07/2020_Honda_Brio_Satya_E_1.2_DD1_%2820211006%29.jpg",
+        }
+
+        const payloadUp = {
+            name: "mobilio",
+            price: 12000,
+            size: "large",
+            image: "https://upload.wikimedia.org/wikipedia/commons/0/07/2020_Honda_Brio_Satya_E_1.2_DD1_%2820211006%29.jpg",
+        }
+
+        const mockRequest = {
+            params: {
+                id: 1,
+            },
+            body: {
+                payloadUpdate
+            }
+        };
+
+        const mockCar = new Car(payloadUpdate);
+        mockCar.update = jest.fn().mockReturnThis(payloadUp);
+
+
+        const mockCarModel = {};
+        mockCarModel.getCarFromRequest = jest.fn().mockReturnValue(mockCar);
+
+        const mockResponse = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis()
+        }
+
+        const carController = new CarController({
+            carModel: mockCarModel
+        });
+        await carController.handleUpdateCar(mockRequest, mockResponse);
+
+        expect(mockCarModel.getCarFromRequest).toHaveBeenCalledWith(1);
+        expect(mockCar.update).toHaveBeenCalledWith(payloadUpdate);
+        expect(mockResponse.status).toHaveBeenCalledWith(200);
+        expect(mockResponse.json).toHaveBeenCalledWith(mockCar);
     });
 });
 
@@ -241,7 +346,7 @@ describe('handleDeleteCar', () => {
         const mockResponse = {};
 
         mockResponse.status = jest.fn().mockReturnThis();
-        
+
         mockResponse.end = jest.fn().mockReturnThis();
 
         const carcontroller = new CarController({
@@ -251,42 +356,5 @@ describe('handleDeleteCar', () => {
 
         expect(mockResponse.status).toHaveBeenCalledWith(204);
         expect(mockResponse.end).toHaveBeenCalled()
-    });
-});
-
-describe('handleUpdateCar', () => {
-    it('handleUpdateCar', async () => {
-        const mockRequest = {};
-        const {
-            name,
-            price,
-            size,
-            image
-        } = mockRequest.body;
-
-        const mockCarModel = {};
-        const mockResponse = {
-            status: jest.fn().mockReturnThis(),
-            json: jest.fn().mockReturnThis()
-        }
-
-        const app = new CarController({
-            carModel: mockCarModel
-        })
-
-        const car = await app.getCarFromRequest(mockRequest);
-
-        await car.update({
-            name,
-            price,
-            size,
-            image,
-            isCurrentlyRented: false
-        })
-
-        await app.handleUpdateCar(mockRequest, mockResponse);
-
-        expect(mockResponse.status).toHaveBeenCalledWith(200);
-        expect(mockResponse.json), toHaveBeenCalledWith(car);
     });
 });
